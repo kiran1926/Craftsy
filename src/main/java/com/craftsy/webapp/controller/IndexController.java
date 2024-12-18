@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController {
     //for our slash / page
-    @GetMapping("/")
+    @GetMapping(value = {"/", "/index", "/index.html"})
     public ModelAndView index(){
         ModelAndView response = new ModelAndView();
         response.setViewName("index");

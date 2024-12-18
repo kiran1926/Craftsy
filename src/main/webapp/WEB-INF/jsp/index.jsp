@@ -3,6 +3,6 @@
 
 <jsp:include page="include/header.jsp"/>
 
-<h1>Index Page</h1>
+<h1>Craftsy : Artisans' marketplace</h1>
 
 <jsp:include page="include/footer.jsp"/>
