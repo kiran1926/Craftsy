@@ -19,7 +19,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column( name = "id")
-    private Long id;
+    private Integer id;
 
     //  one Order to many orderDetails : One to Many for order details
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -33,7 +33,7 @@ public class Order {
     private User user;
 
     @Column( name = "user_id" , insertable = false, updatable = false)
-    private Long userId;
+    private Integer userId;
 
     @Column( name = "order_date")
     private Timestamp orderDate;

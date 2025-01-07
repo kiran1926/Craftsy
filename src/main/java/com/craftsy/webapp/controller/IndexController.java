@@ -8,8 +8,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 @Controller
 public class IndexController {
-    //for our slash / page
-    @GetMapping(value = {"/", "/index", "/index.html"})
+    //Homepage controller
+    @GetMapping(value = {"/", "/homepage", "/homepage.html"})
+    public ModelAndView homepage(){
+        ModelAndView response = new ModelAndView();
+        response.setViewName("homepage");
+        return response;
+    }
+
+    @GetMapping("/index")
     public ModelAndView index(){
         ModelAndView response = new ModelAndView();
         response.setViewName("index");

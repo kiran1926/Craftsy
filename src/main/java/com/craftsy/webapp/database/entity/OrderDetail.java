@@ -16,27 +16,27 @@ public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column( name = "id")
-    private Long id;
+    private Integer id;
 
     // many order_details to one product : many to one with products
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "product_id", nullable = false)
     @ToStringExclude
-    private Product products;
+    private Product product;
 
     @Column( name = "product_id" , insertable = false, updatable = false)
-    private Long productId;
+    private Integer productId;
 
-    // many order_details to one product : many to one with products
+    // many order_details to one order : many to one with products
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", nullable = false)
     @ToStringExclude
-    private Order orders;
+    private Order order;
 
     @Column( name = "order_id" , insertable = false, updatable = false)
-    private Long orderId;
+    private Integer orderId;
 
-    @Column( name = "quantity")
-    private int quantity;
+    @Column( name = "quantity", columnDefinition = "bigint")
+    private Integer quantity;
 
 }

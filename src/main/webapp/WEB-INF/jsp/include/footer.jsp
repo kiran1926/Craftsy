@@ -3,7 +3,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12 ">
-                Some content here that you want
+                2024 @Craftsy. All rights reserved.
+                <a href="#" class="text-white mx-2">Privacy Policy</a>
+                <a href="#" class="text-white mx-2">Terms of Service</a>
             </div>
         </div>
         <div class="py-5"></div>

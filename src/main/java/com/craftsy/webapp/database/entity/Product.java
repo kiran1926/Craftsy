@@ -18,7 +18,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column( name = "id")
-    private Long id;
+    private Integer id;
 
     //  one product to many orderDetails : One to Many for order details
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -32,7 +32,7 @@ public class Product {
     private User user;
 
     @Column(name = "user_id", insertable = false, updatable = false)
-    private Long userId;
+    private Integer userId;
 
     @Column( name = "name")
     private String name;
@@ -40,10 +40,10 @@ public class Product {
     @Column( name = "description")
     private String description;
 
-    @Column( name = "price")
-    private double price;
+    @Column( name = "price", columnDefinition = "decimal")
+    private Double price;
 
     @Column( name = "stock_quantity")
-    private int stockQuantity;
+    private Integer stockQuantity;
 
 }
