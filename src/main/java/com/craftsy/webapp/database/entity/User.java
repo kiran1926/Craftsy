@@ -36,11 +36,8 @@ public class User {
     @ToStringExclude
     private List<Order> orders;
 
-    @Column( name = "firstname")
-    private String firstName;
-
-    @Column( name = "lastname")
-    private String lastName;
+    @Column(name = "full_name")
+    private String fullName;
 
     @Column( name = "email")
     private String email;

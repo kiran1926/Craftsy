@@ -1,0 +1,78 @@
+
+.form-col {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    line-height: 2;
+    /*height: 500px;*/
+    width: 400px;
+    border-radius: 7px;
+    margin: 60px auto;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    font-size: medium;
+}
+
+.form-col:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+.form-title {
+    text-align: center;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    background-color: #711A4E;
+    color: beige;
+    border-radius: 7px 7px 0 0;
+}
+
+.form-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button-1 {
+    padding-left: 99px;
+    padding-right: 96px;
+    display: block;
+    align-self: center;
+    padding-top: 11px;
+}
+.btn{
+    width: 130px;
+    padding: 12px;
+    background-color: #711A4E;
+    color: beige;
+    border:1px solid; border-radius:10px; border-color: lightgrey
+}
+button:hover{
+    transform: scale(1.1);
+    background-color: #961362;
+    color: #9e5782;
+}
+.nav-link:hover{
+    transform: scale(1.2);
+    color: #9e5782;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-check-input {
+    margin-right: 8px;
+}
+
+input[type="text"]:focus{
+    border: 1px;
+    border-color: #961362;
+    outline: 2px ridge #961362 ;
+
+}

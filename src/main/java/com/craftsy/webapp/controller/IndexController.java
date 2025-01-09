@@ -12,7 +12,7 @@ public class IndexController {
     @GetMapping(value = {"/", "/homepage", "/homepage.html"})
     public ModelAndView homepage(){
         ModelAndView response = new ModelAndView();
-        response.setViewName("homepage");
+        response.setViewName("homepage/homepage");
         return response;
     }
 

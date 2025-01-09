@@ -1,4 +1,13 @@
-<section class="container py-5" style="font-family: 'Quicksand',sans-serif; background-color: #e9d7d7; border-radius: 10px; padding-left: 20px; padding-right: 20px;">
+<%-- JSTL --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<jsp:include page="../include/header.jsp"/>
+<section>
+<h1>Discover Unique Handmade Crafts</h1>
+<p>Connect with artisans and support their creativity.</p>
+</section>
+
+<section class="container py-5" style="font-family: 'Quicksand',sans-serif; background-color: white; border-radius: 10px; padding-left: 20px; padding-right: 20px;">
   <div class="featured" >
     <h3 class="text-center mb-4">Featured Categories</h3>
     <div class="row">
@@ -18,3 +27,5 @@
     </div>
   </div>
 </section>
+
+<jsp:include page="../include/footer.jsp"/>

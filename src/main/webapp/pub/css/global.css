@@ -18,3 +18,9 @@
 .navbar{
     color: beige;
 }
+
+.nav-link:hover {
+    transform: scale(1.2);
+    color: #9e5782;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}

@@ -32,6 +32,8 @@ public class SecurityConfig {
         //login
         http.formLogin(formLogin -> formLogin
                 .loginPage("/login/login")
+                //this is for after login redirect to homepage
+//                .successForwardUrl("/homepage")
                 .loginProcessingUrl("/login/loginSubmit"));
 
         //logout

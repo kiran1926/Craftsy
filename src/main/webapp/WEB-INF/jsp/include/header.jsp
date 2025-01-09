@@ -5,6 +5,12 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<!-- ====================  icons import  ======================= -->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</html>
+
 <html>
 <head>
     <title>Title</title>
@@ -21,27 +27,43 @@
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+    <!--Font import-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet">
+
 </head>
+
 <body class="bg-light2">
+
+<style>
+    .container-fluid{
+        font-family: "Quicksand", sans-serif;
+        font-size: medium;
+        font-weight: 500;
+    }
+</style>
 
 <%-- Work on Header from bootstrap--%>
 <section>
     <nav class="navbar navbar-expand-lg navbar-dark bg-header">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/homepage"><img src="./pub/images/craftsylogo.png" alt="Craftsy" height="100px" ></a>
+            <a class="navbar-brand" href="/homepage"><img src="./pub/images/logo.png" alt="Craftsy" height="100px" ></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/index">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    <a class="nav-link dropdown-toggle" href=/product/search" id="navbarDropdown" role="button"
                                        data-bs-toggle="dropdown" aria-expanded="false" style="color: beige;">
                                         Categories
                                     </a>
@@ -68,21 +90,46 @@
                                     </ul>
                                 </li>
                             </ul>
-
                         </div>
-                        
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/customer/search">Product Search Bar</a>
+                        <div class="container">
+                            <form class="d-flex">
+                                <div class="input-group" style="width:900px;">
+                                    <input class="form-control" type="search" placeholder="Search Craftsy"
+                                           aria-label="Search" style="font-size: larger">
+                                    <button class="btn btn-outline" style="background-color: #ede0e0; width:70px; " type="submit">
+                                        <a class="nav-link" href="/product/search" ><ion-icon name="search-outline" style="color: #973b72; font-size: larger;  "></ion-icon></a>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
                     </li>
+
+
+                    <sec:authorize access="!isAuthenticated()">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login/login">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login/signup">Sign Up</a>
+                        </li>
+                    </sec:authorize>
+                    <sec:authorize access="isAuthenticated()">
+                        <li class="nav-item">
+                            <span class="nav-link">
+                                <sec:authentication property="principal.username"/>
+                            </span>
+                                <%-- <a class="nav-link" href="/login/logout">Logout</a>--%>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login/logout">Logout</a>
+                        </li>
+                    </sec:authorize>
                     <li class="nav-item">
-                        <a class="nav-link" href="/customer/create">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/employee/search">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customer/create">Cart</a>
+                        <a class="nav-link" href="/customer/cart"><ion-icon name="cart-sharp" style="font-size:25px"></ion-icon></a>
                     </li>
                 </ul>
             </div>
