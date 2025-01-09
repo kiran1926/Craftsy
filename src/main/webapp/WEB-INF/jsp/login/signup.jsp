@@ -13,13 +13,18 @@
 
 <section class="bg-light1 pt-5 pb-5">
     <div class="container">
-
+        <!--title of form-->
+        <div class="form-title">
+            <span style="font-size: 25px">Sign Up</span>
+        </div>
 
         <form action="/login/signupSubmit" method="post">
+            <!--Input box for email or username-->
             <div class="mt-3 row justify-content-center">
-                <label for="username" class="col-sm-2 col-form-label">Username</label>
+                <label for="username" class="col-sm-2 col-form-label">Username *</label>
                 <div class="col-sm-10 col-lg-6">
-                    <input type="text" class="form-control" id="username" name="username" value="">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Your Email *" value=""
+                           style="padding: 11px; width:300px; font-size: medium; border:1px solid; border-radius:7px; border-color: lightgrey;">
                 </div>
             </div>
             <c:if test="${bindingResult.hasFieldErrors('username')}">
@@ -33,11 +38,12 @@
                 </div>
             </c:if>
 
-
+            <!--Input box for password-->
             <div class="mt-3 row justify-content-center">
-                <label for="password" class="col-sm-2 col-form-label">Password</label>
+                <label for="password" class="col-sm-2 col-form-label">Password *</label>
                 <div class="col-sm-10 col-lg-6">
-                    <input type="text" class="form-control" id="password" name="password" value="">
+                    <input type="text" class="form-control" id="password" name="password" placeholder="Your Password *"  value=""
+                           style="padding: 11px; width:300px; font-size: medium; border:1px solid; border-radius:7px; border-color: lightgrey">
                 </div>
             </div>
             <c:if test="${bindingResult.hasFieldErrors('password')}">
@@ -52,9 +58,10 @@
             </c:if>
 
             <div class="mt-3 row justify-content-center">
-                <label for="fullname" class="col-sm-2 col-form-label">Full Name</label>
+                <label for="fullname" class="col-sm-2 col-form-label">Full Name *</label>
                 <div class="col-sm-10 col-lg-6">
-                    <input type="text" class="form-control" id="fullname" name="fullname" value="">
+                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Your Full Name" value=""
+                           style="padding: 11px; width:300px; font-size: medium; border:1px solid; border-radius:7px; border-color: lightgrey">
                 </div>
             </div>
             <c:if test="${bindingResult.hasFieldErrors('fullname')}">
