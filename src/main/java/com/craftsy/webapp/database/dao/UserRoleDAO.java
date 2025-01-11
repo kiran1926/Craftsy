@@ -12,7 +12,7 @@ public interface UserRoleDAO extends JpaRepository<UserRole, Long> {
 
     List<UserRole> findUserRoleByUserId(Integer userId);
 
-    List<UserRole> findUserRoleByRoleName(String roleName);
+    List<UserRole> findAllByRoleName(String roleName);
 
     List<UserRole> findUserById(Integer id);
 }

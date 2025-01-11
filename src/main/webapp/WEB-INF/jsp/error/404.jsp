@@ -2,7 +2,7 @@
 
 <jsp:include page="../include/header.jsp"/>
 
-<section class="bg-light1 pt-5 pb-5">
+<section class="body-bg pt-5 pb-5">
     <div class="container">
         <div class="row">
             <h1 class="m-0 text-center">404 Error - Not Found</h1>

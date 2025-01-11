@@ -50,21 +50,21 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-dark bg-header">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/homepage"><img src="./pub/images/logo.png" alt="Craftsy" height="100px" ></a>
+            <a class="navbar-brand" href="/homepage" style="padding-left: 140px"><img src="/pub/images/logo.png" alt="Craftsy" height="100px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/homepage">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/homepage" style="padding-right: 30px; color: whitesmoke" >Home</a>
                     </li>
                     <li class="nav-item">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href=/product/search" id="navbarDropdown" role="button"
-                                       data-bs-toggle="dropdown" aria-expanded="false" style="color: beige;">
+                                       data-bs-toggle="dropdown" aria-expanded="false" style="color: whitesmoke; padding-right: 30px">
                                         Categories
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -95,9 +95,10 @@
 
                     <li class="nav-item">
                         <div class="container">
-                            <form class="d-flex">
-                                <div class="input-group" style="width:900px;">
-                                    <input class="form-control" type="search" placeholder="Search Craftsy"
+                            <form action="/product/search" class="d-flex">
+                                <div class="input-group" style="width:990px; padding-right: 30px">
+                                    <input class="form-control" type="search" id="name" name="name" value="${search}"
+                                           placeholder="Search Craftsy"
                                            aria-label="Search" style="font-size: larger">
                                     <button class="btn btn-outline" style="background-color: #ede0e0; width:70px; " type="submit">
                                         <a class="nav-link" href="/product/search" ><ion-icon name="search-outline" style="color: #973b72; font-size: larger;  "></ion-icon></a>
@@ -105,17 +106,23 @@
                                 </div>
                             </form>
                         </div>
-
                     </li>
+
+                    <%--  to create product for Artisan  --%>
+                    <sec:authorize access="hasAuthority('ARTISAN')">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/product/create" style="padding-right: 20px; color: whitesmoke">Create Product</a>
+                        </li>
+                    </sec:authorize>
 
 
                     <sec:authorize access="!isAuthenticated()">
                         <li class="nav-item">
-                            <a class="nav-link" href="/login/login">Log In</a>
+                            <a class="nav-link" href="/login/login" style="padding-right: 30px; color: whitesmoke">Log In</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login/signup">Sign Up</a>
-                        </li>
+<%--                        <li class="nav-item">--%>
+<%--                            <a class="nav-link" href="/login/signup">Sign Up</a>--%>
+<%--                        </li>--%>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
                         <li class="nav-item">
@@ -125,11 +132,11 @@
                                 <%-- <a class="nav-link" href="/login/logout">Logout</a>--%>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login/logout">Logout</a>
+                            <a class="nav-link" href="/login/logout" style="padding-right: 10px; color: whitesmoke" >Logout</a>
                         </li>
                     </sec:authorize>
                     <li class="nav-item">
-                        <a class="nav-link" href="/customer/cart"><ion-icon name="cart-sharp" style="font-size:25px"></ion-icon></a>
+                        <a class="nav-link" href="/customer/cart"><ion-icon name="cart-sharp" style="font-size:25px; color: whitesmoke"></ion-icon></a>
                     </li>
                 </ul>
             </div>

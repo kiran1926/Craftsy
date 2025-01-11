@@ -14,7 +14,9 @@ public interface ProductDAO extends JpaRepository<Product, Long> {
 
     //harry potter magic way
 
-    List<Product> findProductById(Integer id);
+    List<Product> findProductsById(Integer id);
+
+    Product findProductById(Integer id);
 
     List<Product> findProductByDescription(String description);
 

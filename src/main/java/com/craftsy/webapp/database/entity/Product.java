@@ -37,6 +37,9 @@ public class Product {
     @Column( name = "name")
     private String name;
 
+    @Column( name = "category")
+    private String category;
+
     @Column( name = "description")
     private String description;
 
@@ -45,5 +48,8 @@ public class Product {
 
     @Column( name = "stock_quantity")
     private Integer stockQuantity;
+
+    @Column( name = "image_url")
+    private String imageUrl;
 
 }

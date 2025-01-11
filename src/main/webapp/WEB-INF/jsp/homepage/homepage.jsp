@@ -2,13 +2,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="../include/header.jsp"/>
-<section>
-<h1>Discover Unique Handmade Crafts</h1>
-<p>Connect with artisans and support their creativity.</p>
+
+<section class="body-bg pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      <h1 class="m-0 text-center">Discover Unique Handmade Crafts</h1>
+      <p class="m-0 text-center">Connect with artisans and support their creativity.</p>
+    </div>
+  </div>
 </section>
 
-<section class="container py-5" style="font-family: 'Quicksand',sans-serif; background-color: white; border-radius: 10px; padding-left: 20px; padding-right: 20px;">
-  <div class="featured" >
+<%--this section is half and half- image on one side and text on the other--%>
+<section>
+
+</section>
+
+<section class="container" style="font-family: 'Quicksand',sans-serif; background-color: white; border-radius: 10px; padding-left: 20px; padding-right: 20px;">
+  <div class="featured mb-5 mt-5">
     <h3 class="text-center mb-4">Featured Categories</h3>
     <div class="row">
       <div class="col-md-4">
