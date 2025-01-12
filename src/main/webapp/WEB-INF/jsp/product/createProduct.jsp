@@ -132,20 +132,20 @@
                     </c:if>
 
 
-                    <div class="mt-3 row justify-content-center" style="padding-right:120px">
-                        <label for="userId" class="col-sm-2 col-form-label">Artisan</label>
-                        <div class="col-sm-10 col-lg-6">
-                            <select id="userId" name="user" class="form-control"
-                                    style="padding: 11px; width:500px; font-size: medium; border:1px solid; border-radius:7px; border-color: lightgrey;">
-                                <option></option>
-                                <c:forEach var="user" items="${artisanFound}">
-                                    <option value="${user.id}"
-                                            <c:if test="${form.userId eq user.id}">selected</c:if>
-                                    >${user.fullName}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                    </div>
+<%--                    <div class="mt-3 row justify-content-center" style="padding-right:120px">--%>
+<%--                        <label for="userId" class="col-sm-2 col-form-label">Artisan</label>--%>
+<%--                        <div class="col-sm-10 col-lg-6">--%>
+<%--                            <select id="userId" name="user" class="form-control"--%>
+<%--                                    style="padding: 11px; width:500px; font-size: medium; border:1px solid; border-radius:7px; border-color: lightgrey;">--%>
+<%--                                <option></option>--%>
+<%--                                <c:forEach var="user" items="${artisanFound}">--%>
+<%--                                    <option value="${user.id}"--%>
+<%--                                            <c:if test="${form.userId eq user.id}">selected</c:if>--%>
+<%--                                    >${user.fullName}</option>--%>
+<%--                                </c:forEach>--%>
+<%--                            </select>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
 
                     <div class="mt-3 row justify-content-center" style="padding-right: 120px">

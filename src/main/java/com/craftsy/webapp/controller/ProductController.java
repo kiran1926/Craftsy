@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -62,8 +63,8 @@ public class ProductController {
         ModelAndView response = new ModelAndView();
         response.setViewName("product/createProduct");
 
-        List<User> artisans = userDAO.findAllUsersByUserRoles();
-        response.addObject("artisanFound", artisans);
+//        List<User> artisans = userDAO.findAllUsersByUserRoles();
+//        response.addObject("artisanFound", artisans);
 
 //        //this will get the entity
 //        User loggedInUser = authenticatedUserService.loadCurrentUser();
@@ -81,10 +82,8 @@ public class ProductController {
         // manually do some validations here in the controller
         if (StringUtils.isEmpty(form.getUpload().getOriginalFilename())){
             // we are not allowing countries that start with X anymore
-            bindingResult.rejectValue("upload", "does not matter", "Country must not begin with X");
-        }
-
-        if (bindingResult.hasErrors()){
+            bindingResult.rejectValue("upload", "does not matter", "NO file upload");
+        } else if (bindingResult.hasErrors()){
             for (ObjectError error : bindingResult.getAllErrors()){
                 log.debug(error.toString());
             }
@@ -92,15 +91,16 @@ public class ProductController {
             response.addObject("bindingResult", bindingResult);
             response.addObject("form", form);
 
-            List<User> users = userDAO.findAllUsers();
-            response.addObject("usersFound", users);
+//            List<User> users = userDAO.findAllUsers();
+//            response.addObject("usersFound", users);
 
 //            List<UserRole> artisan = userRoleDAO.findAllByRoleName("ARTISAN");
 //            List<User> artisans = userDAO.findAllByUserRoles(artisan);
 //            response.addObject("artisanFound", artisans);
 
         }else {
-            Product product = productDAO.findProductById(form.getId());
+            Product product;
+            product = productDAO.findProductById(form.getId());
             if (product == null){
                 product = new Product();
             }
@@ -108,10 +108,16 @@ public class ProductController {
             product.setDescription(form.getDescription());
             product.setPrice(form.getPrice());
             product.setStockQuantity(form.getStockQuantity());
+            product.setCategory(form.getCategory());
+
+            User loggedInUser = authenticatedUserService.loadCurrentUser();
+            log.debug("!!!!!!!!!!" + loggedInUser.toString());
+            product.setUserId(loggedInUser.getId());
+            product.setUser(loggedInUser);
 
             //priming this for employee dropdown for after going to error
-            User user = userDAO.findUserById(form.getUserId());
-            product.setUser(user);
+//            User user = userDAO.findUserById(form.getUserId());
+//            product.setUser(user);
 
             //image file upload
             log.debug("uploaded filename = " + form.getUpload().getOriginalFilename()+ " size = " + form.getUpload().getSize());
@@ -120,17 +126,43 @@ public class ProductController {
             String url = "/pub/images/" + form.getUpload().getOriginalFilename();
             product.setImageUrl(url);
 
-            User loggedInUser = authenticatedUserService.loadCurrentUser();
-            log.debug("!!!!!!!!!!" + loggedInUser.toString());
-
             //save product
             productDAO.save(product);
 
             log.debug("======== SAVING CUSTOMER "+ product.getId());
 
             //in either case .... create or edit ... I now want to redirect to the edit url
-            response.setViewName("redirect:/product/create/" + product.getId() + "?success=true");
+            response.setViewName("redirect:/product/edit/" + product.getId() + "?success=true");
         }
         return response;
     }
+
+    @GetMapping("/product/edit/{productId}")
+    public  ModelAndView editProduct(@PathVariable Integer productId) {
+        ModelAndView response = new ModelAndView();
+        //this is the page primer for edit
+        response.setViewName("product/createProduct");
+
+        log.debug("======== EDITING CUSTOMER "+ productId);
+
+        Product product = productDAO.findProductById(productId);
+
+        CreateProductFormBean form = new CreateProductFormBean();
+
+        form.setId(product.getId());
+        form.setName(product.getName());
+        form.setCategory(product.getCategory());
+        form.setDescription(product.getDescription());
+        form.setPrice(product.getPrice());
+        form.setStockQuantity(product.getStockQuantity());
+
+         // added this to reflect in dropdown the existing employee for that customer
+        //alternate way
+        response.addObject("form", form);
+        //priming this for employee dropdown on edit page
+
+        return response;
+    }
+
+
 }

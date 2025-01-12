@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringExclude;
 @Entity
 @Getter
 @Setter
-@ToString
+@ToString(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "user_roles")
@@ -19,8 +19,8 @@ public class UserRole {
    private Integer id;
 
     //many to one with users table
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     @ToStringExclude
     private User user;
 
