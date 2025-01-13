@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface ProductDAO extends JpaRepository<Product, Long> {
 
-    @Query( "select p from Product p where p.name = : name ")
-    List<Product> findProductByName (String name);
+    @Query( value = "SELECT p FROM Product p WHERE p.name LIKE %:name%")
+    List<Product> findProductByNameIgnoreCase (String name);
 
     //harry potter magic way
 

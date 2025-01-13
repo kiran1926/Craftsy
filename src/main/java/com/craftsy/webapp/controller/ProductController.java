@@ -50,9 +50,18 @@ public class ProductController {
         //add the search field to the model so we can use it on the jsp page
         response.addObject("search", name);
 
-        if ( name != null){
-            List<Product> products = productDAO.findProductByName(name);
+//        String searchUrl = "/defaultSearch";
+//        if (request.getRequestURI().contains("/products")) {
+//            searchUrl = "/search/products";
+//        } else if (request.getRequestURI().contains("/categories")) {
+//            searchUrl = "/search/categories";
+//        }
+//        request.setAttribute("searchUrl", searchUrl);
+
+        if (name != null && !name.trim().isEmpty()){
+            List<Product> products = productDAO.findProductByNameIgnoreCase(name);
             response.addObject("productsFound", products );
+            log.debug("product found " + products.toString() );
         }
         return response;
     }
@@ -129,7 +138,7 @@ public class ProductController {
             //save product
             productDAO.save(product);
 
-            log.debug("======== SAVING CUSTOMER "+ product.getId());
+            log.debug("======== SAVING PRODUCT "+ product.getId());
 
             //in either case .... create or edit ... I now want to redirect to the edit url
             response.setViewName("redirect:/product/edit/" + product.getId() + "?success=true");
@@ -143,7 +152,7 @@ public class ProductController {
         //this is the page primer for edit
         response.setViewName("product/createProduct");
 
-        log.debug("======== EDITING CUSTOMER "+ productId);
+        log.debug("======== EDITING Product "+ productId);
 
         Product product = productDAO.findProductById(productId);
 

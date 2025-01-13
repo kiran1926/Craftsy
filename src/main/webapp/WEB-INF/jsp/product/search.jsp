@@ -4,6 +4,7 @@
 <jsp:include page="../include/header.jsp"/>
 
 
+<%--Header seaction--%>
 <section class="body-bg pt-5 pb-5">
     <div class="container">
         <div class="row">
@@ -13,56 +14,58 @@
     </div>
 </section>
 
-<%--<section class="body-bg pt-5 pb-5" >--%>
-<%--    <div class="container">--%>
-<%--        <form action="/product/search" class="mb-0">--%>
-<%--            <div class="row pt-3 justify-content-center">--%>
-<%--                <div class="col-6">--%>
+<%--trying to create a grid of products search need to fix code--%>
 
-<%--                    <div class="mb-3">--%>
-<%--                        <label for="firstName" class="form-label">First Name</label>--%>
-<%--                        <input type="text" class="form-control" id="firstName" name="firstName" value="${search}">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="row justify-content-center">--%>
-<%--                <div class="col-6">--%>
-<%--                    <button type="submit" class="btn btn-primary">Search</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </form>--%>
-<%--    </div>--%>
-<%--</section>--%>
+<div class="container mt-4">
+    <!-- Filters -->
+    <div class="d-flex flex-wrap gap-2 mb-3">
+        <button class="btn btn-outline-secondary">Category</button>
+        <button class="btn btn-outline-secondary">Price Range</button>
+        <button class="btn btn-outline-secondary">Rating</button>
+        <button class="btn btn-outline-secondary">Sort by</button>
+    </div>
 
-<%--  <c:if test="${customersKey.size() > 0}"> --%>
-<c:if test="${ not empty search}">
-    <section class="body-bg pb-4 pt-4">
-        <div class="container">
-            <h2 class="text-center">Products Found(${productsFound.size()})</h2>
-            <table class="table mt-5">
-                <tr>
-                    <th>Name</th>
-                    <th>Id</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Image</th>
-                    <th>In stock</th>
-                    <th>Edit</th>
-                </tr>
+    <!-- Products Grid -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <c:forEach var="product" items="${productsFound}">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="${product.imageUrl}" class="card-img-top" alt="${product.name}">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">${product.name}</h5>
+                        <p class="card-text">$${product.price}</p>
+                        <p class="card-text text-truncate">${product.description}</p>
+                        <div class="mt-auto">
+                            <a href="/product/${product.id}" class="btn btn-primary btn-sm">View Details</a>
+                            <a href="/cart/add/${product.id}" class="btn btn-success btn-sm">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
 
-                <c:forEach var="product" items="${productsFound}">
-                    <tr>
-                        <td>${product.name}</td>
-                        <td>${product.description}</td>
-                        <td>${product.price}</td>
-                        <td>${product.stockQuantity}</td>
-                        <td><img src="${product.imageUrl}" style="width:200px;"/></td>
-                        <td><a href="/product/edit/${product.id}">Edit</a></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div>
-    </section>
-</c:if>
+    <!-- Pagination -->
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li class="page-item ${page == 1 ? 'disabled' : ''}">
+                <a class="page-link" href="?page=${page - 1}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <c:forEach var="i" begin="1" end="${totalPages}">
+                <li class="page-item ${page == i ? 'active' : ''}">
+                    <a class="page-link" href="?page=${i}">${i}</a>
+                </li>
+            </c:forEach>
+            <li class="page-item ${page == totalPages ? 'disabled' : ''}">
+                <a class="page-link" href="?page=${page + 1}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
 
 <jsp:include page="../include/footer.jsp"/>
