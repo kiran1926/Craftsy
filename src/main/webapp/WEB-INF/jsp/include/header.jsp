@@ -5,7 +5,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!-- ====================  icons import  ======================= -->
+<!-- ==================== icons import ======================= -->
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -34,12 +34,18 @@
             href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
             rel="stylesheet">
 
+    <%-- fontawesome    --%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+
 </head>
 
 <body class="bg-light2">
 
 <style>
-    .container-fluid{
+    .container-fluid {
         font-family: "Quicksand", sans-serif;
         font-size: medium;
         font-weight: 500;
@@ -50,25 +56,31 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-dark bg-header">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/homepage" style="padding-left: 140px"><img src="/pub/images/logo.png" alt="Craftsy" height="100px"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/homepage" style="padding-left: 140px"><img src="/pub/images/logo.png"
+                                                                                      alt="Craftsy" height="100px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/homepage" style="padding-right: 30px; color: whitesmoke" >Home</a>
+                        <a class="nav-link active" aria-current="page" href="/homepage"
+                           style="padding-right: 30px; color: whitesmoke">Home</a>
                     </li>
                     <li class="nav-item">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href=/product/search" id="navbarDropdown" role="button"
-                                       data-bs-toggle="dropdown" aria-expanded="false" style="color: whitesmoke; padding-right: 30px">
+                                    <a class="nav-link dropdown-toggle" href=/product/search" id="navbarDropdown"
+                                       role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false"
+                                       style="color: whitesmoke; padding-right: 30px">
                                         Categories
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Art and Decor</a></li>
+                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Art and
+                                            Decor</a></li>
                                         <li><a class="dropdown-item" href="#">Paintings</a></li>
                                         <li><a class="dropdown-item" href="#">Wall Hangings</a></li>
                                         <li><a class="dropdown-item" href="#">Sculptures</a></li>
@@ -76,14 +88,16 @@
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Jewelry and Accessories</a></li>
+                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Jewelry and
+                                            Accessories</a></li>
                                         <li><a class="dropdown-item" href="#">Handmade Jewelry</a></li>
                                         <li><a class="dropdown-item" href="#">Ethnic Jewelry</a></li>
                                         <li><a class="dropdown-item" href="#">Jewelry and Accessories</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Handicrafts and Folk Art</a></li>
+                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Handicrafts and
+                                            Folk Art</a></li>
                                         <li><a class="dropdown-item" href="#">Cultural Handicrafts</a></li>
                                         <li><a class="dropdown-item" href="#">Pottery</a></li>
                                         <li><a class="dropdown-item" href="#">Bamboo work</a></li>
@@ -100,8 +114,12 @@
                                     <input class="form-control" type="search" id="name" name="name" value="${search}"
                                            placeholder="Search Craftsy"
                                            aria-label="Search" style="font-size: larger">
-                                    <button class="btn btn-outline" style="background-color: #ede0e0; width:70px; " type="submit">
-                                        <a class="nav-link" href="/product/search" ><ion-icon name="search-outline" style="color: #973b72; font-size: larger;  "></ion-icon></a>
+                                    <button class="btn btn-outline" style="background-color: #ede0e0; width:70px; "
+                                            type="submit">
+                                        <a class="nav-link" href="/product/search">
+                                            <ion-icon name="search-outline"
+                                                      style="color: #973b72; font-size: larger;  "></ion-icon>
+                                        </a>
                                     </button>
                                 </div>
                             </form>
@@ -111,32 +129,45 @@
                     <%--  to create product for Artisan  --%>
                     <sec:authorize access="hasAuthority('ARTISAN')">
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/create" style="padding-right: 20px; color: whitesmoke">Create Product</a>
+                            <a class="nav-link" href="/product/create" style="padding-right: 20px; color: whitesmoke">Create
+                                Product</a>
                         </li>
                     </sec:authorize>
 
 
                     <sec:authorize access="!isAuthenticated()">
                         <li class="nav-item">
-                            <a class="nav-link" href="/login/login" style="padding-right: 30px; color: whitesmoke">Log In</a>
+                            <a class="nav-link" href="/login/login" style="padding-right: 30px; color: whitesmoke">Log
+                                In</a>
                         </li>
-<%--                        <li class="nav-item">--%>
-<%--                            <a class="nav-link" href="/login/signup">Sign Up</a>--%>
-<%--                        </li>--%>
                     </sec:authorize>
+
                     <sec:authorize access="isAuthenticated()">
-                        <li class="nav-item">
-                            <span class="nav-link">
-                                <sec:authentication property="principal.username"/>
-                            </span>
-                                <%-- <a class="nav-link" href="/login/logout">Logout</a>--%>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href=/user/myProfile" id="profileDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false"
+                               style="color: whitesmoke; padding-right: 10px">
+                                <ion-icon name="person-outline"></ion-icon>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <sec:authentication property="principal.username"/>
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">My Orders</a></li>
+                                <li><a class="dropdown-item" href="#">My Wishlist</a></li>
+                                <li><a class="dropdown-item" href="#">Account</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login/logout" style="padding-right: 10px; color: whitesmoke" >Logout</a>
+                            <a class="nav-link" href="/login/logout" style="padding-right: 10px; color: whitesmoke">Logout</a>
                         </li>
                     </sec:authorize>
                     <li class="nav-item">
-                        <a class="nav-link" href="/customer/cart"><ion-icon name="cart-sharp" style="font-size:25px; color: whitesmoke"></ion-icon></a>
+                        <a class="nav-link" href="/cart/view">
+                            <ion-icon name="cart-sharp" style="font-size:25px; color: whitesmoke"></ion-icon>
+                        </a>
                     </li>
                 </ul>
             </div>

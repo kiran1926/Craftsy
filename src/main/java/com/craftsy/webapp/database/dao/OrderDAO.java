@@ -12,7 +12,9 @@ public interface OrderDAO extends JpaRepository<Order, Long> {
 
     List<Order> findOrderById(Integer id);
 
-    List<Order> findOrderByUserId(Integer userId);
+    Order findOrderByUserId(Integer userId);
 
     List<Order> findOrderByOrderDate(Timestamp orderDate);
+
+    Order findOrderByUserIdAndOrderStatus(Integer userId, String orderStatus);
 }

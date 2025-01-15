@@ -20,20 +20,20 @@ public class OrderDetail {
 
     // many order_details to one product : many to one with products
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "product_id", nullable = false)
-    @ToStringExclude
+    @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
+    @ToString.Exclude
     private Product product;
 
-    @Column( name = "product_id" , insertable = false, updatable = false)
+    @Column( name = "product_id")
     private Integer productId;
 
     // many order_details to one order : many to one with products
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "order_id", nullable = false)
-    @ToStringExclude
+    @JoinColumn(name = "order_id", nullable = false, insertable = false, updatable = false)
+    @ToString.Exclude
     private Order order;
 
-    @Column( name = "order_id" , insertable = false, updatable = false)
+    @Column( name = "order_id")
     private Integer orderId;
 
     @Column( name = "quantity", columnDefinition = "bigint")

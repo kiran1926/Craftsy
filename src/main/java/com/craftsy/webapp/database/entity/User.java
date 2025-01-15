@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@ToString(onlyExplicitlyIncluded = true)
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Table( name = "users")
@@ -22,17 +22,17 @@ public class User {
     private Integer id;
 
     //one user to many userRoles : One to Many for userRoles
-    @ToStringExclude
+    @ToString.Exclude
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<UserRole> userRoles;
 
     //One user to many products : one to many for Product
-    @ToStringExclude
+    @ToString.Exclude
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Product> products;
 
     //one user to many orders : One to Many for userRoles
-    @ToStringExclude
+    @ToString.Exclude
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Order> orders;
 

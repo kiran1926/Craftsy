@@ -43,6 +43,19 @@ public class ProductController {
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
 
+    // ----------------    View Product list   -----------------
+
+    @GetMapping("/products")
+    public ModelAndView listProducts() {
+        ModelAndView response = new ModelAndView("product/list");
+        List<Product> products = productDAO.findAll();
+        response.addObject("products", products);
+        return response;
+    }
+
+
+    // ----------------    Search Product    -----------------
+
     @GetMapping("/product/search")
     public ModelAndView searchProduct(@RequestParam(required = false) String name){
         ModelAndView response = new ModelAndView();
@@ -66,21 +79,25 @@ public class ProductController {
         return response;
     }
 
+
+    // ----------------    Create Product    -----------------
+
     @PreAuthorize("hasAuthority('ARTISAN')")
     @GetMapping("/product/create")
     public ModelAndView createProduct(){
         ModelAndView response = new ModelAndView();
         response.setViewName("product/createProduct");
 
+        User loggedInUser = authenticatedUserService.loadCurrentUser();
+        log.debug("!!!!!!!!!!" + loggedInUser.toString());
 //        List<User> artisans = userDAO.findAllUsersByUserRoles();
 //        response.addObject("artisanFound", artisans);
 
-//        //this will get the entity
-//        User loggedInUser = authenticatedUserService.loadCurrentUser();
-//        log.debug("!!!!!!!!!!" + loggedInUser.toString());
-
         return response;
     }
+
+
+    // ----------------    Create Product Submit    -----------------
 
     @PreAuthorize("hasAuthority('ARTISAN')")
     @PostMapping("/product/create-product")
@@ -124,7 +141,7 @@ public class ProductController {
             product.setUserId(loggedInUser.getId());
             product.setUser(loggedInUser);
 
-            //priming this for employee dropdown for after going to error
+            //priming this for user dropdown for after going to error
 //            User user = userDAO.findUserById(form.getUserId());
 //            product.setUser(user);
 
@@ -146,6 +163,9 @@ public class ProductController {
         return response;
     }
 
+
+    // ----------------    Edit Product    -----------------
+
     @GetMapping("/product/edit/{productId}")
     public  ModelAndView editProduct(@PathVariable Integer productId) {
         ModelAndView response = new ModelAndView();
@@ -165,13 +185,9 @@ public class ProductController {
         form.setPrice(product.getPrice());
         form.setStockQuantity(product.getStockQuantity());
 
-         // added this to reflect in dropdown the existing employee for that customer
         //alternate way
         response.addObject("form", form);
-        //priming this for employee dropdown on edit page
-
         return response;
     }
-
 
 }

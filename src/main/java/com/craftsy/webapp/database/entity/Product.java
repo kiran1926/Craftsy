@@ -22,13 +22,13 @@ public class Product {
 
     //  one product to many orderDetails : One to Many for order details
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @ToStringExclude
+    @ToString.Exclude
     private List<OrderDetail> orderDetails;
 
     //  many to one with users table
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    @ToStringExclude
+    @ToString.Exclude
     private User user;
 
     @Column(name = "user_id", insertable = false, updatable = false)

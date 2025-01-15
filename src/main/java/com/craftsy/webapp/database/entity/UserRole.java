@@ -21,7 +21,7 @@ public class UserRole {
     //many to one with users table
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @ToStringExclude
+    @ToString.Exclude
     private User user;
 
     @Column(name = "user_id" , insertable = false, updatable = false)

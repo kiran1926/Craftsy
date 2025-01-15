@@ -21,5 +21,4 @@ public interface ProductDAO extends JpaRepository<Product, Long> {
     List<Product> findProductByDescription(String description);
 
     List<Product> findProductByUser(User user);
-
 }
