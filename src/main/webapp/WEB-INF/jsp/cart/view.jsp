@@ -8,41 +8,13 @@
 <link href="/pub/css/cartView.css" rel="stylesheet">
 
 <%--Header seaction--%>
-<section class="body-bg pt-5 pb-5">
+<section class="body-bg pt-3 pb-3">
     <div class="container">
         <div class="row">
             <h1 class="m-0 text-center">Shopping Cart</h1>
         </div>
     </div>
 </section>
-
-<div class="data checkout-header">
-    <div class="wt-display-flex-xs wt-align-items-center wt-justify-content-space-between">
-        <p class="wt-text-title-larger">Your Cart</p>
-    </div>
-</div>
-
-<div class="wt-position-relative">
-    <div id="multi-shop-cart-list" class="wt-align-items-center">
-        <div data-multi-shop-cart class="wt-mt-xs-1 wt-mt-lg-0 wt-mt-xs-5 wt-position-relative">
-            <div class="wt-grid wt-position-relative wt-pl-xs-0 wt-pr-xs-0">
-                <ul class="cart-list-items wt-grid__item-xs-12 wt-grid__item-sm-12 wt-p-xs-0 wt-pr-md-3 wt-height-full wt-list-unstyled wt-grid__item-lg-8 wt-grid__item-md-7">
-                    <li class="condensed-desktop-cart wt-mt-xs-3 wt-mt-md-5">
-                        <div class="wt-rounded-02 wt-b-xs">
-                            <div class>
-                                <div class="wt-pt-xs-4 wt-pl-xs-4 wt-pr-xs-4 wt-pb-xs-1">
-
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 
 <section class="bg-light2 pt-5 pb-5">
     <div class="container">
@@ -65,23 +37,34 @@
                     <c:forEach var="item" items="${cartItems}">
                         <tr>
                             <td>${item.product.name}</td>
+                            <!-- Product Image -->
+
                             <td>
-                                <form action="/cart/update" method="post">
-                                    <input type="hidden" name="productId" value="${item.product.id}">
-                                    <input type="number" name="quantity" value="${item.quantity}" min="1" max="10">
-                                    <button type="submit">Update</button>
-                                </form>
+                                <div class="quantity-controls" style="display: inline">
+                                    <form action="/cart/adjustQuantity" method="POST" style="display:inline;">
+                                        <input type="hidden" name="productId" value="${item.product.id}">
+                                        <input type="hidden" name="adjustment" value="-1">
+                                        <button type="submit" class="quantity-button">-</button>
+                                    </form>
+                                    <span class="quantity-display"> ${item.quantity}</span>
+                                    <form action="/cart/adjustQuantity" method="POST" style="display:inline;">
+                                        <input type="hidden" name="productId" value="${item.product.id}">
+                                        <input type="hidden" name="adjustment" value="1">
+                                        <button type="submit" class="quantity-button">+</button>
+                                    </form>
+                                </div>
                             </td>
                             <td>
                                 <fmt:formatNumber value="${item.product.price}" type="currency" currencySymbol="$"/>
                             </td>
                             <td>
-                                <fmt:formatNumber value="${item.product.price * item.quantity}" type="currency" currencySymbol="$"/>
+                                <fmt:formatNumber value="${item.product.price * item.quantity}" type="currency"
+                                                  currencySymbol="$"/>
                             </td>
                             <td>
-                                <form action="/cart/remove" method="post">
+                                <form action="/cart/remove/${item.product.id}" method="GET">
                                     <input type="hidden" name="productId" value="${item.product.id}">
-                                    <button type="submit">Remove</button>
+                                    <button type="submit" class="delete-button">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -92,7 +75,7 @@
                     <p><strong>Total:</strong>
                         <fmt:formatNumber value="${totalPrice}" type="currency" currencySymbol="$"/>
                     </p>
-                    <a href="/checkout" class="btn btn-primary">Proceed to Checkout</a>
+                    <a href="/cart/confirmation" class="btn btn-primary">Proceed to Checkout</a>
                 </div>
             </c:otherwise>
         </c:choose>

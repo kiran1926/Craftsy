@@ -7,10 +7,10 @@
 }
 
 .bg-light2 {
-    background: white;
+    background: rgba(248, 241, 241, 0.88);
 }
 .bg-footer{
-    background-color: #9b9ea3;
+    background-color: #711A4E;
 }
 .body-bg{
     background-color: #F8F1F1;
@@ -23,4 +23,22 @@
     transform: scale(1.2);
     color: #9e5782;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-sh{
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+}
+.card-div{
+    box-shadow: 0 0 10px  rgba(0, 0, 0, 0.1);
+}
+
+.btn{ padding: 12px;
+    background-color: #711A4E;
+    color: whitesmoke;
+    border:1px solid; border-radius:10px; border-color: lightgrey}
+
+.btn:hover{
+    transform: scale(1.1);
+    background-color: #d5449b;
+    color: whitesmoke;
 }

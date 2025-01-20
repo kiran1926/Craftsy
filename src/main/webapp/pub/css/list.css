@@ -1,0 +1,18 @@
+.btn {
+    width: 110px;
+    padding: 12px;
+    background-color: #711A4E;
+    color: whitesmoke;
+    border:1px solid; border-radius:10px; border-color: lightgrey
+}
+.btn:hover{
+    transform: scale(1.1);
+    background-color: #d5449b;
+    color: whitesmoke;
+}
+
+.list-group-item:hover {
+    transform: scale(1);
+    background-color: #F8F1F1;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}

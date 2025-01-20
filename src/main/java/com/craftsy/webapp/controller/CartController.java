@@ -6,6 +6,7 @@ import com.craftsy.webapp.database.entity.OrderDetail;
 import com.craftsy.webapp.database.entity.Product;
 import com.craftsy.webapp.database.entity.User;
 import com.craftsy.webapp.security.AuthenticatedUserService;
+import com.craftsy.webapp.services.CartService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Timestamp;
@@ -31,11 +34,6 @@ public class CartController {
     private ProductDAO productDAO;
 
     @Autowired
-    private UserDAO userDAO;
-
-
-
-    @Autowired
     private OrderDetailDAO orderDetailDAO;
 
     @Autowired
@@ -43,6 +41,9 @@ public class CartController {
 
     @Autowired
     private OrderDAO orderDAO;
+
+    @Autowired
+    private CartService cartService;
 
     // ----------------    Add to Cart    -----------------
 
@@ -53,7 +54,7 @@ public class CartController {
         // Retrieve the order\
         User loggedInUser = authenticatedUserService.loadCurrentUser();
         Integer userId = loggedInUser.getId();
-        Order cartOrder = orderDAO.findOrderByUserId(userId);
+        Order cartOrder = orderDAO.findOrderByUserIdAndOrderStatus(userId, "CART");
 
         List<OrderDetail> cartItems = new ArrayList<>();
         double totalPrice = 0;
@@ -67,7 +68,6 @@ public class CartController {
                 totalPrice += item.getProduct().getPrice() * item.getQuantity();
             }
         }
-
         response.addObject("cartItems", cartItems);
         response.addObject("totalPrice", totalPrice);
         response.setViewName("cart/view");
@@ -84,9 +84,7 @@ public class CartController {
             response.setViewName("redirect:/error");
             return response;
         }
-        User loggedInUser = authenticatedUserService.loadCurrentUser();
-        Integer userId = loggedInUser.getId();
-
+        Integer userId = authenticatedUserService.loadCurrentUser().getId();
         //Check for existing order
         Order order = orderDAO.findOrderByUserIdAndOrderStatus(userId, "CART");
         if (order == null) {
@@ -98,7 +96,6 @@ public class CartController {
             order.setOrderDate(currentTimestamp);
             orderDAO.save(order);
         }
-
         // Fetch product from productId
         Product product = productDAO.findProductById(productId);
 
@@ -120,18 +117,85 @@ public class CartController {
         response.addObject("cartItems", orderDetails);
 
         //redirect to cart page
-        response.setViewName("redirect:/cart");
-
+        response.setViewName("redirect:/cart/view");
         return response;
+    }
 
+    //  ----------   Remove from cart --------------
+    @GetMapping("/cart/remove/{productId}")
+    public ModelAndView removeFromCart(@PathVariable Integer productId){
+        ModelAndView response = new ModelAndView();
+        response.setViewName("cart/view");
+
+        // Validate productId
+        if (productId == null || productId <= 0) {
+            response.setViewName("redirect:/error");
+            return response;
+        }
+
+        Integer userId = authenticatedUserService.loadCurrentUser().getId();
+
+        //Check for existing order
+        Order order = orderDAO.findOrderByUserIdAndOrderStatus(userId, "CART");
+        if(order != null){
+            OrderDetail orderDetails = orderDetailDAO.findOrderDetailByProductIdAndOrderId(productId, order.getId());
+             if(orderDetails != null) {
+                 //remove from cart
+                 orderDetailDAO.delete(orderDetails);
+                 log.debug("removed "+ orderDetails);
+                 response.setViewName("redirect:/cart/view");
+             }
+        }
+        return response;
+    }
+
+    // --------------- adjust cart quantity  -----------
+
+    @PostMapping("/cart/adjustQuantity")
+    public ModelAndView adjustCartQuantity (@RequestParam("productId") Integer productId,
+                                            @RequestParam("adjustment") int adjustment){
+        ModelAndView response = new ModelAndView();
+        try{
+            cartService.adjustCartQuantity(productId, adjustment);
+            response.setViewName("redirect:/cart/view");
+        }catch(IllegalArgumentException e ){
+            response.addObject("error", e.getMessage());
+            response.setViewName("cart/view");
+        }
+        return response;
+    }
+
+    // --------------- Order checkout  -----------
+
+    @GetMapping("/cart/confirmation")
+        public ModelAndView orderConfirmation(){
+            ModelAndView response = new ModelAndView();
+        Integer userId = authenticatedUserService.loadCurrentUser().getId();
+        Order cartOrder = orderDAO.findOrderByUserIdAndOrderStatus(userId,"CART");
+        List<OrderDetail> cartItems =  orderDetailDAO.findOrderDetailByOrderId(cartOrder.getId());
+        double totalPrice = 0;
+        for (OrderDetail item : cartItems) {
+            totalPrice += item.getProduct().getPrice() * item.getQuantity();
+        }
+        response.addObject("cartItems", cartItems);
+        response.addObject("totalPrice", totalPrice);
+            response.setViewName("cart/checkout");
+        return response;
+    }
+
+    @PostMapping("/cart/checkout")
+    public ModelAndView cartCheckout (){
+        ModelAndView response = new ModelAndView();
+
+        try{
+            cartService.cartCheckout();
+            response.addObject("message", "Order placed successfully!");
+            response.setViewName("cart/checkout");
+        } catch (Exception e) {
+            response.addObject("error", e.getMessage());
+            response.setViewName("cart/view");
+        }
+        return response;
     }
 }
 
-
-
-//select * from order where user_id = authenticated user id and status = cart
-//if ( order is not found ) then create a new order in the database
-//Query the product from the database using the id
-//Query the orderDetails using the orderId and the product id ..
-//if a record is found then increment the quantity by 1 and save
-//if a record is not found then create a new orderDetails and set quantity to 1 and save

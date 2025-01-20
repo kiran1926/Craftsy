@@ -32,3 +32,34 @@
 .btn-primary {
     background-color: #28a745;
 }
+.quantity-button {
+    background-color: transparent;
+    border:none;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.quantity-controls {
+    padding: 5px;
+    border: 3px solid #a14c7f;
+    border-radius: 16px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.quantity-display {
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.product-image img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}

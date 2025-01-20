@@ -10,9 +10,7 @@ import java.util.List;
 
 public interface OrderDAO extends JpaRepository<Order, Long> {
 
-    List<Order> findOrderById(Integer id);
-
-    Order findOrderByUserId(Integer userId);
+    Order findByUserId(Integer userId);
 
     List<Order> findOrderByOrderDate(Timestamp orderDate);
 

@@ -54,10 +54,11 @@
                                 <option>Paintings</option>
                                 <option>Pottery</option>
                                 <option>Bamboo Artifacts</option>
-                                <option>Lippan Art</option>
+                                <option>Wall Hangings</option>
                                 <option>Sculptures</option>
-                                <option>Ethnic Jewelry</option>
-                                <option>Mandala Art</option>
+                                <option>Cultural Handicrafts</option>
+                                <option>Wooden Handicrafts</option>
+                                <option>Ceramic Kitchenware</option>
                             </select>
                         </div>
                     </div>

@@ -53,6 +53,14 @@ public class ProductController {
         return response;
     }
 
+    @GetMapping("/product/{productId}")
+    public ModelAndView viewProduct(@PathVariable Integer productId){
+        ModelAndView response = new ModelAndView("product/view-product");
+        Product product = productDAO.findProductById(productId);
+        response.addObject("product", product);
+        return response;
+    }
+
 
     // ----------------    Search Product    -----------------
 
@@ -90,9 +98,6 @@ public class ProductController {
 
         User loggedInUser = authenticatedUserService.loadCurrentUser();
         log.debug("!!!!!!!!!!" + loggedInUser.toString());
-//        List<User> artisans = userDAO.findAllUsersByUserRoles();
-//        response.addObject("artisanFound", artisans);
-
         return response;
     }
 
@@ -116,9 +121,6 @@ public class ProductController {
             response.setViewName("product/createProduct");
             response.addObject("bindingResult", bindingResult);
             response.addObject("form", form);
-
-//            List<User> users = userDAO.findAllUsers();
-//            response.addObject("usersFound", users);
 
 //            List<UserRole> artisan = userRoleDAO.findAllByRoleName("ARTISAN");
 //            List<User> artisans = userDAO.findAllByUserRoles(artisan);

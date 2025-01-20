@@ -13,10 +13,10 @@ public interface ProductDAO extends JpaRepository<Product, Long> {
     List<Product> findProductByNameIgnoreCase (String name);
 
     //harry potter magic way
-
-    List<Product> findProductsById(Integer id);
-
     Product findProductById(Integer id);
+
+    @Query( value = "SELECT p FROM Product p WHERE p.category LIKE %:category%")
+    List<Product> findByCategoryIgnoreCase (String category);
 
     List<Product> findProductByDescription(String description);
 

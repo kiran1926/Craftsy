@@ -1,7 +1,9 @@
 package com.craftsy.webapp.controller;
 
 import com.craftsy.webapp.database.dao.UserDAO;
+import com.craftsy.webapp.database.dao.UserRoleDAO;
 import com.craftsy.webapp.database.entity.User;
+import com.craftsy.webapp.database.entity.UserRole;
 import com.craftsy.webapp.form.SignupFormBean;
 import com.craftsy.webapp.security.AuthenticatedUserService;
 import jakarta.servlet.http.HttpSession;
@@ -27,6 +29,8 @@ public class LoginController {
 
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
+    @Autowired
+    private UserRoleDAO userRoleDAO;
 
     // -----------------------------  login page  --------------------------
 
@@ -38,6 +42,7 @@ public class LoginController {
 
         return response;
     }
+
 
     @GetMapping("/login/signup")
     public ModelAndView signup() {
@@ -76,7 +81,11 @@ public class LoginController {
             user.setPassword(encryptedPassword);
 
             userDAO.save(user);
-
+            UserRole userRole = new UserRole();
+            userRole.setUser(user);
+            userRole.setUserId(user.getId());
+            userRole.setRoleName("CUSTOMER");
+            userRoleDAO.save(userRole);
             //since this is a new user we can manually authenticate them for the first time
             authenticatedUserService.changeLoggedInUsername(session, form.getUsername(), form.getPassword());
 

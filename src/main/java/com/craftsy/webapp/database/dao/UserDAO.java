@@ -11,8 +11,6 @@ import java.util.Map;
 
 public interface UserDAO extends JpaRepository<User, Long> {
 
-    User findUserById(Integer id);
-
     List<User> findUserByFullName(String firstName);
 
     User findUserByEmailIgnoreCase(String email);
@@ -20,7 +18,6 @@ public interface UserDAO extends JpaRepository<User, Long> {
     //Native Query
     @Query(value = "select * from users order by full_name asc;", nativeQuery = true)
     List<User> findAllUsers();
-
 
     //Native
     @Query(value= " select u.id, u.full_name, u.email, u.password from users u, user_roles ur where u.id = ur.user_id and ur.role_name = 'ARTISAN';", nativeQuery = true)
