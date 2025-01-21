@@ -25,6 +25,7 @@ public class SecurityConfig {
                 // Require authentication for /customer/** endpoints
                 .requestMatchers("/artisan/**").authenticated()
                 .requestMatchers("/cart/**").authenticated()
+                .requestMatchers("/admin/**").authenticated()
                 // Allow all other requests without authentication
                 .anyRequest().permitAll()
         );

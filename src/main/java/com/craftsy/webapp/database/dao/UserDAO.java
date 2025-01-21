@@ -11,7 +11,8 @@ import java.util.Map;
 
 public interface UserDAO extends JpaRepository<User, Long> {
 
-    List<User> findUserByFullName(String firstName);
+    List<User> findByFullName(String firstName);
+    User findUserByFullName(String fullName);
 
     User findUserByEmailIgnoreCase(String email);
 

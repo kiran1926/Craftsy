@@ -110,7 +110,7 @@
       </div>
 
 <%--      some text on the right of carousel      --%>
-      <div class="container d-flex flex-column col-4 body-bg justify-content-center" style="background: white; border-radius: 10px">
+      <div class="container d-flex flex-column col-4 justify-content-center card-sh" style="background-color: white; border-radius: 10px;">
         <div class="p-2">
         <h1 class="m-0  text-center align-items-center">Discover Unique Handmade Crafts</h1>
         </div>

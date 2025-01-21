@@ -51,14 +51,24 @@
                             <select id="category" name="category" class="form-control"
                                     style="padding: 11px; width:500px; font-size: medium; border:1px solid; border-radius:7px; border-color: lightgrey;">
                                 <option></option>
-                                <option>Paintings</option>
-                                <option>Pottery</option>
-                                <option>Bamboo Artifacts</option>
-                                <option>Wall Hangings</option>
-                                <option>Sculptures</option>
-                                <option>Cultural Handicrafts</option>
-                                <option>Wooden Handicrafts</option>
-                                <option>Ceramic Kitchenware</option>
+                                <option <c:if test="${form.category eq 'Bamboo Artifacts'}">selected</c:if>>Bamboo
+                                    Artifacts
+                                </option>
+                                <option <c:if test="${form.category eq 'Ceramic Kitchenware'}">selected</c:if>>Ceramic
+                                    Kitchenware
+                                </option>
+                                <option <c:if test="${form.category eq 'Cultural Handicrafts'}">selected</c:if>>Cultural
+                                    Handicrafts
+                                </option>
+                                <option <c:if test="${form.category eq 'Paintings'}">selected</c:if>>Paintings</option>
+                                <option <c:if test="${form.category eq 'Pottery'}">selected</c:if>>Pottery</option>
+                                <option <c:if test="${form.category eq 'Sculptures'}">selected</c:if>>Sculptures
+                                </option>
+                                <option <c:if test="${form.category eq 'Wall Hangings'}">selected</c:if>>Wall Hangings
+                                </option>
+                                <option <c:if test="${form.category eq 'Wooden Handicrafts'}">selected</c:if>>Wooden
+                                    Handicrafts
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -74,7 +84,7 @@
                     </c:if>
 
 
-                    <div class="mt-3 row justify-content-center" style="padding-right: 120px" >
+                    <div class="mt-3 row justify-content-center" style="padding-right: 120px">
                         <label for="description" class="col-sm-2 col-form-label">Description</label>
                         <div class="col-sm-10 col-lg-6">
                             <input type="text" class="form-control" id="description" name="description"
@@ -133,25 +143,31 @@
                     </c:if>
 
 
-<%--                    <div class="mt-3 row justify-content-center" style="padding-right:120px">--%>
-<%--                        <label for="userId" class="col-sm-2 col-form-label">Artisan</label>--%>
-<%--                        <div class="col-sm-10 col-lg-6">--%>
-<%--                            <select id="userId" name="user" class="form-control"--%>
-<%--                                    style="padding: 11px; width:500px; font-size: medium; border:1px solid; border-radius:7px; border-color: lightgrey;">--%>
-<%--                                <option></option>--%>
-<%--                                <c:forEach var="user" items="${artisanFound}">--%>
-<%--                                    <option value="${user.id}"--%>
-<%--                                            <c:if test="${form.userId eq user.id}">selected</c:if>--%>
-<%--                                    >${user.fullName}</option>--%>
-<%--                                </c:forEach>--%>
-<%--                            </select>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                    <%--                    <div class="mt-3 row justify-content-center" style="padding-right:120px">--%>
+                    <%--                        <label for="userId" class="col-sm-2 col-form-label">Artisan</label>--%>
+                    <%--                        <div class="col-sm-10 col-lg-6">--%>
+                    <%--                            <select id="userId" name="user" class="form-control"--%>
+                    <%--                                    style="padding: 11px; width:500px; font-size: medium; border:1px solid; border-radius:7px; border-color: lightgrey;">--%>
+                    <%--                                <option></option>--%>
+                    <%--                                <c:forEach var="user" items="${artisanFound}">--%>
+                    <%--                                    <option value="${user.id}"--%>
+                    <%--                                            <c:if test="${form.userId eq user.id}">selected</c:if>--%>
+                    <%--                                    >${user.fullName}</option>--%>
+                    <%--                                </c:forEach>--%>
+                    <%--                            </select>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
 
 
                     <div class="mt-3 row justify-content-center" style="padding-right: 120px">
                         <label for="upload" class="col-sm-2 col-form-label">Upload Image</label>
                         <div class="col-sm-10 col-lg-6">
+                            <c:if test="${not empty form.imageUrl}">
+                                <label for="upload"></label>
+                                <img src="${form.imageUrl}" alt="Product Image"
+                                     style="max-width: 200px; max-height: 80px; margin-bottom: 10px;"/>
+                            </c:if>
+                            <label for="upload"></label>
                             <input type="file" class="form-control" id="upload" name="upload"
                                    style="padding: 11px; width:500px; font-size: medium; border:1px solid; border-radius:7px; border-color: lightgrey;">
                         </div>

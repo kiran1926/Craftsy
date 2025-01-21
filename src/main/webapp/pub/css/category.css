@@ -1,0 +1,5 @@
+
+.form-check-input:checked, custom-radio{
+    background-color: #711A4E;
+    border-color: #711A4E;
+}

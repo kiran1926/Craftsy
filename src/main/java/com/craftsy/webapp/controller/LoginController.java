@@ -39,7 +39,6 @@ public class LoginController {
     public ModelAndView theLoginPage() {
         ModelAndView response = new ModelAndView();
         response.setViewName("login/login");
-
         return response;
     }
 

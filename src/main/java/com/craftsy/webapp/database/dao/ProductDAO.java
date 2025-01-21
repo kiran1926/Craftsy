@@ -18,7 +18,6 @@ public interface ProductDAO extends JpaRepository<Product, Long> {
     @Query( value = "SELECT p FROM Product p WHERE p.category LIKE %:category%")
     List<Product> findByCategoryIgnoreCase (String category);
 
-    List<Product> findProductByDescription(String description);
-
     List<Product> findProductByUser(User user);
+
 }

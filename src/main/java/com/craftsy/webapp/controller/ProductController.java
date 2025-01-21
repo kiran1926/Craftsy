@@ -35,12 +35,6 @@ public class ProductController {
     private ProductDAO productDAO;
 
     @Autowired
-    private UserDAO userDAO;
-
-    @Autowired
-    private UserRoleDAO userRoleDAO;
-
-    @Autowired
     private AuthenticatedUserService authenticatedUserService;
 
     // ----------------    View Product list   -----------------
@@ -87,10 +81,9 @@ public class ProductController {
         return response;
     }
 
-
     // ----------------    Create Product    -----------------
 
-    @PreAuthorize("hasAuthority('ARTISAN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','ARTISAN')")
     @GetMapping("/product/create")
     public ModelAndView createProduct(){
         ModelAndView response = new ModelAndView();
@@ -104,7 +97,7 @@ public class ProductController {
 
     // ----------------    Create Product Submit    -----------------
 
-    @PreAuthorize("hasAuthority('ARTISAN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','ARTISAN')")
     @PostMapping("/product/create-product")
     public ModelAndView createProductSubmit(@Valid CreateProductFormBean form, BindingResult bindingResult)throws Exception{
         ModelAndView response = new ModelAndView();
@@ -112,8 +105,7 @@ public class ProductController {
 
         // manually do some validations here in the controller
         if (StringUtils.isEmpty(form.getUpload().getOriginalFilename())){
-            // we are not allowing countries that start with X anymore
-            bindingResult.rejectValue("upload", "does not matter", "NO file upload");
+            bindingResult.rejectValue("upload", "does not matter", "No file upload");
         } else if (bindingResult.hasErrors()){
             for (ObjectError error : bindingResult.getAllErrors()){
                 log.debug(error.toString());
@@ -121,10 +113,6 @@ public class ProductController {
             response.setViewName("product/createProduct");
             response.addObject("bindingResult", bindingResult);
             response.addObject("form", form);
-
-//            List<UserRole> artisan = userRoleDAO.findAllByRoleName("ARTISAN");
-//            List<User> artisans = userDAO.findAllByUserRoles(artisan);
-//            response.addObject("artisanFound", artisans);
 
         }else {
             Product product;
@@ -143,9 +131,13 @@ public class ProductController {
             product.setUserId(loggedInUser.getId());
             product.setUser(loggedInUser);
 
+//            List<UserRole> artisan = userRoleDAO.findAllByRoleName("ARTISAN");
+//            List<User> artisans = userDAO.findAllByUserRoles(artisan);
+//            response.addObject("artisanFound", artisans);
+
             //priming this for user dropdown for after going to error
-//            User user = userDAO.findUserById(form.getUserId());
-//            product.setUser(user);
+            // User user = userDAO.findUserById(form.getUserId());
+            // product.setUser(user);
 
             //image file upload
             log.debug("uploaded filename = " + form.getUpload().getOriginalFilename()+ " size = " + form.getUpload().getSize());
@@ -167,7 +159,7 @@ public class ProductController {
 
 
     // ----------------    Edit Product    -----------------
-
+    @PreAuthorize("hasAnyAuthority('ADMIN','ARTISAN')")
     @GetMapping("/product/edit/{productId}")
     public  ModelAndView editProduct(@PathVariable Integer productId) {
         ModelAndView response = new ModelAndView();
@@ -186,7 +178,7 @@ public class ProductController {
         form.setDescription(product.getDescription());
         form.setPrice(product.getPrice());
         form.setStockQuantity(product.getStockQuantity());
-
+        form.setImageUrl(product.getImageUrl());
         //alternate way
         response.addObject("form", form);
         return response;

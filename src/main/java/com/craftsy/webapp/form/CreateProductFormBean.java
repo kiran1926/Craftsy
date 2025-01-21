@@ -31,5 +31,7 @@ public class CreateProductFormBean {
     @NotNull(message = "Product Image is required.")
     private MultipartFile upload;
 
+    private String imageUrl; // for displaying existing image
+
     private Integer userId;
 }

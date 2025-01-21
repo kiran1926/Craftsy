@@ -35,7 +35,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             //this is not a good practice to log username
             throw new UsernameNotFoundException("Username " + username + " not found in database");
         }
-
         //spring security config
         boolean accountIsEnabled = true;
         boolean accountNonExpired = true;
@@ -68,8 +67,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
             authorities.add(authority);
         }
-
         return authorities;
     }
-
 }

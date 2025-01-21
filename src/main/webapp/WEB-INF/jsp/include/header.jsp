@@ -55,9 +55,9 @@
 <%-- Work on Header from bootstrap--%>
 <section>
     <nav class="navbar navbar-expand-lg navbar-dark bg-header">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/homepage" style="padding-left: 140px"><img src="/pub/images/logo.png"
-                                                                                      alt="Craftsy" height="100px"></a>
+        <div class="container-fluid pt-2 pb-2">
+            <a class="navbar-brand" href="/homepage" style="padding-left: 105px"><img src="/pub/images/logo.png"
+                                                                                      alt="Craftsy" height="90px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -66,7 +66,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/homepage"
-                           style="padding-right: 30px; color: whitesmoke">Home</a>
+                           style="padding-right: 30px; padding-top: 20px; color: whitesmoke; font-size: 20px">Home</a>
                     </li>
                     <li class="nav-item">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -75,7 +75,7 @@
                                     <a class="nav-link dropdown-toggle" href=/product/search" id="navbarDropdown"
                                        role="button"
                                        data-bs-toggle="dropdown" aria-expanded="false"
-                                       style="color: whitesmoke; padding-right: 30px">
+                                       style="color: whitesmoke; padding-right: 30px; padding-top: 20px; font-size: 20px">
                                         Categories
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -84,18 +84,17 @@
                                         <li><a class="dropdown-item" href="#">Paintings</a></li>
                                         <li><a class="dropdown-item" href="#">Wall Hangings</a></li>
                                         <li><a class="dropdown-item" href="#">Sculptures</a></li>
-                                        <li><a class="dropdown-item" href="#">Home Accents</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Jewelry and
-                                            Accessories</a></li>
-                                        <li><a class="dropdown-item" href="#">Handmade Jewelry</a></li>
-                                        <li><a class="dropdown-item" href="#">Ethnic Jewelry</a></li>
-                                        <li><a class="dropdown-item" href="#">Jewelry and Accessories</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
+<%--                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Jewelry and--%>
+<%--                                            Accessories</a></li>--%>
+<%--                                        <li><a class="dropdown-item" href="#">Handmade Jewelry</a></li>--%>
+<%--                                        <li><a class="dropdown-item" href="#">Ethnic Jewelry</a></li>--%>
+<%--                                        <li><a class="dropdown-item" href="#">Jewelry and Accessories</a></li>--%>
+<%--                                        <li>--%>
+<%--                                            <hr class="dropdown-divider">--%>
+<%--                                        </li>--%>
                                         <li><a class="dropdown-item" href="#" style="font-weight: bold">Handicrafts and
                                             Folk Art</a></li>
                                         <li><a class="dropdown-item" href="#">Cultural Handicrafts</a></li>
@@ -110,7 +109,7 @@
                     <li class="nav-item">
                         <div class="container">
                             <form action="/product/search" class="d-flex">
-                                <div class="input-group" style="width:990px; padding-right: 30px">
+                                <div class="input-group" style="width:990px; padding-right: 30px; padding-top: 10px">
                                     <input class="form-control" type="search" id="name" name="name" value="${search}"
                                            placeholder="Search Craftsy"
                                            aria-label="Search" style="font-size: larger">
@@ -127,9 +126,9 @@
                     </li>
 
                     <%--  to create product for Artisan  --%>
-                    <sec:authorize access="hasAuthority('ARTISAN')">
+                    <sec:authorize access="hasAnyAuthority('ARTISAN', 'ADMIN')">
                         <li class="nav-item">
-                            <a class="nav-link" href="/product/create" style="padding-right: 20px; color: whitesmoke">Create
+                            <a class="nav-link" href="/product/create" style="padding-right: 30px; color: whitesmoke; font-size: 20px; padding-top: 20px;">Create
                                 Product</a>
                         </li>
                     </sec:authorize>
@@ -137,7 +136,7 @@
 
                     <sec:authorize access="!isAuthenticated()">
                         <li class="nav-item">
-                            <a class="nav-link" href="/login/login" style="padding-right: 30px; color: whitesmoke">Log
+                            <a class="nav-link" href="/login/login" style="padding-right: 30px; color: whitesmoke; font-size: 20px; padding-top: 20px;">Log
                                 In</a>
                         </li>
                     </sec:authorize>
@@ -146,27 +145,30 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href=/user/myProfile" id="profileDropdown" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false"
-                               style="color: whitesmoke; padding-right: 10px">
-                                <ion-icon name="person-outline"></ion-icon>
+                               style="color: whitesmoke; padding-right: 40px; padding-top: 20px;">
+                                <i class="fa-solid fa-user" style="font-size: 25px"></i>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown mt-0">
                                 <li>
                                     <a class="dropdown-item" href="#">
                                         <sec:authentication property="principal.username"/>
                                     </a>
                                 </li>
+                                <sec:authorize access="hasAuthority('ADMIN')">
+                                    <li >
+                                        <a class="dropdown-item" href="/admin/" style="padding-right: 20px;">Admin</a>
+                                    </li>
+                                </sec:authorize>
                                 <li><a class="dropdown-item" href="#">My Orders</a></li>
                                 <li><a class="dropdown-item" href="#">My Wishlist</a></li>
                                 <li><a class="dropdown-item" href="#">Account</a></li>
+                                <li><a class="dropdown-item" href="/login/logout">Logout</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login/logout" style="padding-right: 10px; color: whitesmoke">Logout</a>
                         </li>
                     </sec:authorize>
                     <li class="nav-item">
                         <a class="nav-link" href="/cart/view">
-                            <ion-icon name="cart-sharp" style="font-size:25px; color: whitesmoke"></ion-icon>
+                            <i class="fa-solid fa-cart-shopping" style="font-size: 25px; color: white; padding-top: 13px;"></i>
                         </a>
                     </li>
                 </ul>
