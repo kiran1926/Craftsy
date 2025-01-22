@@ -8,6 +8,7 @@ import com.craftsy.webapp.database.entity.User;
 import com.craftsy.webapp.database.entity.UserRole;
 import com.craftsy.webapp.form.CreateProductFormBean;
 import com.craftsy.webapp.security.AuthenticatedUserService;
+import com.craftsy.webapp.services.ProductService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -37,6 +38,9 @@ public class ProductController {
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
 
+    @Autowired
+    private ProductService productService;
+
     // ----------------    View Product list   -----------------
 
     @GetMapping("/products")
@@ -47,11 +51,27 @@ public class ProductController {
         return response;
     }
 
+    // ----------------    View Product details   -----------------
     @GetMapping("/product/{productId}")
     public ModelAndView viewProduct(@PathVariable Integer productId){
         ModelAndView response = new ModelAndView("product/view-product");
         Product product = productDAO.findProductById(productId);
         response.addObject("product", product);
+        return response;
+    }
+
+    // ----------------    Category search   -----------------
+    @GetMapping("/products/category")
+    public ModelAndView searchByCategory(@RequestParam("category") String category) {
+        ModelAndView response = new ModelAndView();
+        try {
+            List<Product> products = productService.getProductsByCategory(category);
+            response.addObject("products", products);
+            response.addObject("category", category);
+        } catch (Exception e) {
+            response.addObject("error", e.getMessage());
+        }
+        response.setViewName("product/list");
         return response;
     }
 
@@ -61,7 +81,7 @@ public class ProductController {
     @GetMapping("/product/search")
     public ModelAndView searchProduct(@RequestParam(required = false) String name){
         ModelAndView response = new ModelAndView();
-        response.setViewName("product/search");
+        response.setViewName("product/list");
         //add the search field to the model so we can use it on the jsp page
         response.addObject("search", name);
 
@@ -75,7 +95,7 @@ public class ProductController {
 
         if (name != null && !name.trim().isEmpty()){
             List<Product> products = productDAO.findProductByNameIgnoreCase(name);
-            response.addObject("productsFound", products );
+            response.addObject("products", products );
             log.debug("product found " + products.toString() );
         }
         return response;

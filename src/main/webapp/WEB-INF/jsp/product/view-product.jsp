@@ -5,10 +5,10 @@
 <%--load external signup css --%>
 <link href="/pub/css/view-product.css" rel="stylesheet">
 
-<section >
+<section>
     <div class="container card-sh pt-4 pb-4" style="margin-top: 100px; margin-bottom: 100px; background-color: white">
-            <div class="col-md-12 p-5">
-                <div class="row">
+        <div class="col-md-12 p-5">
+            <div class="row">
                 <div class="col-md-6 text-center">
                     <img alt="" src="${product.imageUrl}" width="360px" height="440px" style="border-radius: 10px">
                 </div>
@@ -43,7 +43,12 @@
                             <p>Free Shipping</p>
                         </div>
                     </div>
-                    <a href="/cart/add/${product.id}" class="btn col-md-12">Add To Cart</a>
+                    <c:if test="${product.stockQuantity > 0}">
+                        <a href="/cart/add/${product.id}" class="btn col-md-12">Add To Cart</a>
+                    </c:if>
+                    <c:if test="${product.stockQuantity <= 0}">
+                        <a href="/cart/add/${product.id}" class="btn col-md-12 disabled">Out Of Stock</a>
+                    </c:if>
                 </div>
             </div>
         </div>

@@ -9,9 +9,11 @@ import com.craftsy.webapp.security.AuthenticatedUserService;
 import com.craftsy.webapp.services.CartService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -77,7 +79,7 @@ public class CartController {
     @GetMapping("/cart/add/{productId}")
     public ModelAndView addToCart(@PathVariable Integer productId) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("cart/view");
+        response.setViewName("product/view-product");
 
         // Validate productId
         if (productId == null || productId <= 0) {
@@ -114,10 +116,19 @@ public class CartController {
 
         orderDetailDAO.save(orderDetails);
 
+        if(ObjectUtils.isEmpty(orderDetails)){
+            response.addObject("error", "Product add to cart failed.");
+            response.setViewName("product/list");
+        }else{
+            response.addObject("message", "Product added to the cart");
+            response.setViewName("products/list");
+        }
+
         response.addObject("cartItems", orderDetails);
+        response.addObject("product", product);
 
         //redirect to cart page
-        response.setViewName("redirect:/cart/view");
+        response.setViewName("redirect:/products");
         return response;
     }
 
@@ -173,11 +184,12 @@ public class CartController {
         Integer userId = authenticatedUserService.loadCurrentUser().getId();
         Order cartOrder = orderDAO.findOrderByUserIdAndOrderStatus(userId,"CART");
         List<OrderDetail> cartItems =  orderDetailDAO.findOrderDetailByOrderId(cartOrder.getId());
-        double totalPrice = 0;
+        double subtotal = 0;
         for (OrderDetail item : cartItems) {
-            totalPrice += item.getProduct().getPrice() * item.getQuantity();
+            subtotal = subtotal + (item.getProduct().getPrice() * item.getQuantity());
         }
-        response.addObject("cartItems", cartItems);
+        double totalPrice = subtotal + (subtotal * 0.10);
+        response.addObject("subtotal", subtotal);
         response.addObject("totalPrice", totalPrice);
             response.setViewName("cart/checkout");
         return response;

@@ -14,12 +14,12 @@
                         <div class="list-group" style="border-radius: 10px;">
                             <a href="#" class="list-group-item list-group-item-action active" style="background-color: #711A4E" aria-current="true">
                                 Categories </a>
-                            <a href="#" class="list-group-item list-group-item-action" style="color: #711A4E">Pottery</a>
-                            <a href="#" class="list-group-item list-group-item-action" style="color: #711A4E">Bamboo Artifacts</a>
-                            <a href="#" class="list-group-item list-group-item-action" style="color: #711A4E">Paintings</a>
-                            <a href="#" class="list-group-item list-group-item-action" style="color: #711A4E">Sculptures</a>
-                            <a href="#" class="list-group-item list-group-item-action" style="color: #711A4E">Wall Hangings</a>
-                            <a href="#" class="list-group-item list-group-item-action" style="color: #711A4E">Cultural Handicrafts</a>
+                            <a href="/products/category?category=Pottery" class="list-group-item list-group-item-action" style="color: #711A4E">Pottery</a>
+                            <a href="/products/category?category=Bamboo%20Artifacts" class="list-group-item list-group-item-action" style="color: #711A4E">Bamboo Artifacts</a>
+                            <a href="/products/category?category=Paintings" class="list-group-item list-group-item-action" style="color: #711A4E">Paintings</a>
+                            <a href="/products/category?category=Sculptures" class="list-group-item list-group-item-action" style="color: #711A4E">Sculptures</a>
+                            <a href="/products/category?category=Wall%20Hangings" class="list-group-item list-group-item-action" style="color: #711A4E">Wall Hangings</a>
+                            <a href="/products/category?category=Cultural%20Handicrafts" class="list-group-item list-group-item-action" style="color: #711A4E">Cultural Handicrafts</a>
                         </div>
                     </div>
                 </div>
@@ -28,6 +28,38 @@
                 <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded body-bg">
                     <div class="card-body">
                         <p class="fs-3 text-center" style="color: #711A4E; font-size:200px; font-weight: bolder">Products</p>
+
+                        <!-- Error/Message Section -->
+                        <div class="messages">
+                            <c:if test="${not empty error}">
+                            <div class="toast-container">
+                                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="toast-header">
+                                        <img src="..." class="rounded me-2" alt="...">
+                                        <strong class="me-auto">Bootstrap</strong>
+                                        <small class="text-muted">just now</small>
+                                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    </div>
+                                    <div class="toast-body">
+                                        Product failed to add to cart.
+                                    </div>
+                                </div>
+                                </c:if>
+                                <c:if test="${not empty message}">
+                                <div class="toast-container">
+                                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                                        <div class="toast-header">
+                                            <img src="..." class="rounded me-2" alt="...">
+                                            <strong class="me-auto">Bootstrap</strong>
+                                            <small class="text-muted">just now</small>
+                                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                        </div>
+                                        <div class="toast-body">
+                                            Product added to cart.
+                                        </div>
+                                    </div>
+                                    </c:if>
+                                </div>
                         <%------------     Product grid      ------------%>
 
                         <div class="row">

@@ -56,108 +56,91 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-dark bg-header">
         <div class="container-fluid pt-2 pb-2">
-            <a class="navbar-brand" href="/homepage" style="padding-left: 105px"><img src="/pub/images/logo.png"
-                                                                                      alt="Craftsy" height="90px"></a>
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="/homepage" style="padding-left: 105px;">
+                <img src="/pub/images/logo.png" alt="Craftsy" height="90px">
+            </a>
+
+            <!-- Toggler Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <!-- Right-aligned Items -->
+                <ul class="navbar-nav me-auto">
+                    <!-- Home Link -->
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/homepage"
-                           style="padding-right: 30px; padding-top: 20px; color: whitesmoke; font-size: 20px">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href=/product/search" id="navbarDropdown"
-                                       role="button"
-                                       data-bs-toggle="dropdown" aria-expanded="false"
-                                       style="color: whitesmoke; padding-right: 30px; padding-top: 20px; font-size: 20px">
-                                        Categories
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Art and
-                                            Decor</a></li>
-                                        <li><a class="dropdown-item" href="#">Paintings</a></li>
-                                        <li><a class="dropdown-item" href="#">Wall Hangings</a></li>
-                                        <li><a class="dropdown-item" href="#">Sculptures</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-<%--                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Jewelry and--%>
-<%--                                            Accessories</a></li>--%>
-<%--                                        <li><a class="dropdown-item" href="#">Handmade Jewelry</a></li>--%>
-<%--                                        <li><a class="dropdown-item" href="#">Ethnic Jewelry</a></li>--%>
-<%--                                        <li><a class="dropdown-item" href="#">Jewelry and Accessories</a></li>--%>
-<%--                                        <li>--%>
-<%--                                            <hr class="dropdown-divider">--%>
-<%--                                        </li>--%>
-                                        <li><a class="dropdown-item" href="#" style="font-weight: bold">Handicrafts and
-                                            Folk Art</a></li>
-                                        <li><a class="dropdown-item" href="#">Cultural Handicrafts</a></li>
-                                        <li><a class="dropdown-item" href="#">Pottery</a></li>
-                                        <li><a class="dropdown-item" href="#">Bamboo work</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                           style="padding-right: 30px; color: whitesmoke; font-size: 20px;">Home</a>
                     </li>
 
-                    <li class="nav-item">
-                        <div class="container">
-                            <form action="/product/search" class="d-flex">
-                                <div class="input-group" style="width:990px; padding-right: 30px; padding-top: 10px">
-                                    <input class="form-control" type="search" id="name" name="name" value="${search}"
-                                           placeholder="Search Craftsy"
-                                           aria-label="Search" style="font-size: larger">
-                                    <button class="btn btn-outline" style="background-color: #ede0e0; width:70px; "
-                                            type="submit">
-                                        <a class="nav-link" href="/product/search">
-                                            <ion-icon name="search-outline"
-                                                      style="color: #973b72; font-size: larger;  "></ion-icon>
-                                        </a>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                    <!-- Categories Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/product/search" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false"
+                           style="color: whitesmoke; padding-right: 30px; font-size: 20px;">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/products/category?category=Art%20and%20Decor" style="font-weight: bold;">Art and Decor</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Paintings">Paintings</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Wall%20Hangings">Wall Hangings</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Sculptures">Sculptures</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" style="font-weight: bold;">Handicrafts and Folk Art</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Cultural%20Handicrafts">Cultural Handicrafts</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Pottery">Pottery</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Bamboo%20Artifacts">Bamboo Artifacts</a></li>
+                        </ul>
                     </li>
 
-                    <%--  to create product for Artisan  --%>
+
+                <!-- Center-aligned Search Bar -->
+                    <!-- Search Bar -->
+                    <li class="nav-item">
+                        <form action="/product/search" class="d-flex flex-grow-1 mx-3"  style="width:100%; max-width: 1000px;">
+                            <div class="input-group" style="max-width: 300px; padding-right: 30px;">
+                                <input class="form-control" type="search" id="name" name="name" value="${search}"
+                                       placeholder="Search Craftsy" aria-label="Search" style="font-size: larger;">
+                                <button class="btn btn-outline" style="background-color: #ede0e0; width: 70px;" type="submit">
+                                    <ion-icon name="search-outline" style="color: #973b72; font-size: larger;"></ion-icon>
+                                </button>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+
+                <!-- Right-aligned Items -->
+                <ul class="navbar-nav ms-auto">
+                    <!-- Create Product -->
                     <sec:authorize access="hasAnyAuthority('ARTISAN', 'ADMIN')">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/product/create" style="padding-right: 30px; color: whitesmoke; font-size: 20px; padding-top: 20px;">Create
-                                Product</a>
+                        <li class="nav-item me-3">
+                            <a class="nav-link" href="/product/create"
+                               style="padding-right: 30px; color: whitesmoke; font-size: 20px;">Create Product</a>
                         </li>
                     </sec:authorize>
 
-
+                    <!-- Login/Logout/Profile -->
                     <sec:authorize access="!isAuthenticated()">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login/login" style="padding-right: 30px; color: whitesmoke; font-size: 20px; padding-top: 20px;">Log
-                                In</a>
+                        <li class="nav-item me-3">
+                            <a class="nav-link" href="/login/login"
+                               style="padding-right: 30px; color: whitesmoke; font-size: 20px;">Log In</a>
                         </li>
                     </sec:authorize>
-
                     <sec:authorize access="isAuthenticated()">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href=/user/myProfile" id="profileDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="/user/myProfile" id="profileDropdown" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false"
-                               style="color: whitesmoke; padding-right: 40px; padding-top: 20px;">
-                                <i class="fa-solid fa-user" style="font-size: 25px"></i>
+                               style="color: whitesmoke; padding-right: 30px;">
+                                <i class="fa-solid fa-user" style="font-size: 25px;"></i>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown mt-0">
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <sec:authentication property="principal.username"/>
-                                    </a>
-                                </li>
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item" href="#"><sec:authentication property="principal.username" /></a></li>
                                 <sec:authorize access="hasAuthority('ADMIN')">
-                                    <li >
-                                        <a class="dropdown-item" href="/admin/" style="padding-right: 20px;">Admin</a>
-                                    </li>
+                                    <li><a class="dropdown-item" href="/admin/">Admin</a></li>
                                 </sec:authorize>
                                 <li><a class="dropdown-item" href="#">My Orders</a></li>
                                 <li><a class="dropdown-item" href="#">My Wishlist</a></li>
@@ -166,9 +149,11 @@
                             </ul>
                         </li>
                     </sec:authorize>
+
+                    <!-- Cart -->
                     <li class="nav-item">
                         <a class="nav-link" href="/cart/view">
-                            <i class="fa-solid fa-cart-shopping" style="font-size: 25px; color: white; padding-top: 13px;"></i>
+                            <i class="fa-solid fa-cart-shopping" style="font-size: 25px; color: white;"></i>
                         </a>
                     </li>
                 </ul>
