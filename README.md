@@ -67,7 +67,7 @@ Whether you are **an artisan showcasing your work** or **a customer exploring au
 - **Homepage:**
   - ![Homepage](https://github.com/kiran1926/Craftsy/blob/main/src/main/webapp/pub/images/forgit/homepage.png?raw=true)
   
-
+- **Homepage1:**
   - ![Homepage](https://github.com/kiran1926/Craftsy/blob/main/src/main/webapp/pub/images/forgit/homepage-2.png?raw=true)
 
 - **Products:**
