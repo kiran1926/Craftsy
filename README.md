@@ -66,6 +66,8 @@ Whether you are **an artisan showcasing your work** or **a customer exploring au
 ### Screenshots : 
 - **Homepage:**
   - ![Homepage](https://github.com/kiran1926/Craftsy/blob/main/src/main/webapp/pub/images/forgit/homepage.png?raw=true)
+  
+
   - ![Homepage](https://github.com/kiran1926/Craftsy/blob/main/src/main/webapp/pub/images/forgit/homepage-2.png?raw=true)
 
 - **Products:**
