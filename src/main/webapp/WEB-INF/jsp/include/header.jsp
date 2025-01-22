@@ -38,8 +38,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
-
-
 </head>
 
 <body class="bg-light2">
@@ -57,7 +55,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-header">
         <div class="container-fluid pt-2 pb-2">
             <!-- Brand Logo -->
-            <a class="navbar-brand" href="/homepage" style="padding-left: 105px;">
+            <a class="navbar-brand" href="/homepage" style="padding-left: 150px; padding-right: 20px">
                 <img src="/pub/images/logo.png" alt="Craftsy" height="90px">
             </a>
 
@@ -85,39 +83,49 @@
                             Categories
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/products/category?category=Art%20and%20Decor" style="font-weight: bold;">Art and Decor</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Art%20and%20Decor"
+                                   style="font-weight: bold;">Art and Decor</a></li>
                             <li><a class="dropdown-item" href="/products/category?category=Paintings">Paintings</a></li>
-                            <li><a class="dropdown-item" href="/products/category?category=Wall%20Hangings">Wall Hangings</a></li>
-                            <li><a class="dropdown-item" href="/products/category?category=Sculptures">Sculptures</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#" style="font-weight: bold;">Handicrafts and Folk Art</a></li>
-                            <li><a class="dropdown-item" href="/products/category?category=Cultural%20Handicrafts">Cultural Handicrafts</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Wall%20Hangings">Wall
+                                Hangings</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Sculptures">Sculptures</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" style="font-weight: bold;">Handicrafts and Folk
+                                Art</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Cultural%20Handicrafts">Cultural
+                                Handicrafts</a></li>
                             <li><a class="dropdown-item" href="/products/category?category=Pottery">Pottery</a></li>
-                            <li><a class="dropdown-item" href="/products/category?category=Bamboo%20Artifacts">Bamboo Artifacts</a></li>
+                            <li><a class="dropdown-item" href="/products/category?category=Bamboo%20Artifacts">Bamboo
+                                Artifacts</a></li>
                         </ul>
                     </li>
 
 
-                <!-- Center-aligned Search Bar -->
+                    <!-- Center-aligned Search Bar -->
                     <!-- Search Bar -->
+
                     <li class="nav-item">
-                        <form action="/product/search" class="d-flex flex-grow-1 mx-3"  style="width:100%; max-width: 1000px;">
-                            <div class="input-group" style="max-width: 300px; padding-right: 30px;">
+                        <form action="/product/search" class="d-flex-grow-1" style="width:800px; max-width: 1000px;">
+                            <div class="input-group" style="width: 100%; max-width: 1000px; padding-right: 30px;">
                                 <input class="form-control" type="search" id="name" name="name" value="${search}"
                                        placeholder="Search Craftsy" aria-label="Search" style="font-size: larger;">
-                                <button class="btn btn-outline" style="background-color: #ede0e0; width: 70px;" type="submit">
-                                    <ion-icon name="search-outline" style="color: #973b72; font-size: larger;"></ion-icon>
+                                <button class="btn btn-outline" style="background-color: #ede0e0; width: 70px;"
+                                        type="submit">
+                                    <ion-icon name="search-outline"
+                                              style="color: #973b72; font-size: larger;"></ion-icon>
                                 </button>
                             </div>
                         </form>
                     </li>
-                </ul>
+
 
                 <!-- Right-aligned Items -->
-                <ul class="navbar-nav ms-auto">
-                    <!-- Create Product -->
+
                     <sec:authorize access="hasAnyAuthority('ARTISAN', 'ADMIN')">
-                        <li class="nav-item me-3">
+                        <li class="nav-item ms-3">
                             <a class="nav-link" href="/product/create"
                                style="padding-right: 30px; color: whitesmoke; font-size: 20px;">Create Product</a>
                         </li>
@@ -125,20 +133,22 @@
 
                     <!-- Login/Logout/Profile -->
                     <sec:authorize access="!isAuthenticated()">
-                        <li class="nav-item me-3">
+                        <li class="nav-item ms-3">
                             <a class="nav-link" href="/login/login"
                                style="padding-right: 30px; color: whitesmoke; font-size: 20px;">Log In</a>
                         </li>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/user/myProfile" id="profileDropdown" role="button"
+                        <li class="nav-item dropdown ms-3">
+                            <a class="nav-link dropdown-toggle" href="/user/myProfile" id="profileDropdown"
+                               role="button"
                                data-bs-toggle="dropdown" aria-expanded="false"
                                style="color: whitesmoke; padding-right: 30px;">
                                 <i class="fa-solid fa-user" style="font-size: 25px;"></i>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                                <li><a class="dropdown-item" href="#"><sec:authentication property="principal.username" /></a></li>
+                                <li><a class="dropdown-item" href="#"><sec:authentication
+                                        property="principal.username"/></a></li>
                                 <sec:authorize access="hasAuthority('ADMIN')">
                                     <li><a class="dropdown-item" href="/admin/">Admin</a></li>
                                 </sec:authorize>
@@ -151,7 +161,7 @@
                     </sec:authorize>
 
                     <!-- Cart -->
-                    <li class="nav-item">
+                    <li class="nav-item ms-3">
                         <a class="nav-link" href="/cart/view">
                             <i class="fa-solid fa-cart-shopping" style="font-size: 25px; color: white;"></i>
                         </a>

@@ -19,5 +19,4 @@ public interface ProductDAO extends JpaRepository<Product, Long> {
     List<Product> findByCategoryIgnoreCase (String category);
 
     List<Product> findProductByUser(User user);
-
 }

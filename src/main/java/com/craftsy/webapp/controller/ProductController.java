@@ -85,14 +85,6 @@ public class ProductController {
         //add the search field to the model so we can use it on the jsp page
         response.addObject("search", name);
 
-//        String searchUrl = "/defaultSearch";
-//        if (request.getRequestURI().contains("/products")) {
-//            searchUrl = "/search/products";
-//        } else if (request.getRequestURI().contains("/categories")) {
-//            searchUrl = "/search/categories";
-//        }
-//        request.setAttribute("searchUrl", searchUrl);
-
         if (name != null && !name.trim().isEmpty()){
             List<Product> products = productDAO.findProductByNameIgnoreCase(name);
             response.addObject("products", products );

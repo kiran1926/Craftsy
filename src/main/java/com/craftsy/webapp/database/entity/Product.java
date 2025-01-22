@@ -52,4 +52,11 @@ public class Product {
     @Column( name = "image_url")
     private String imageUrl;
 
+    // Constructor for test
+    public Product(int id, String name, String category) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+    }
+
 }
