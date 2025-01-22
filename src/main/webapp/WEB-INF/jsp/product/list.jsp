@@ -28,6 +28,7 @@
                 <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded body-bg">
                     <div class="card-body">
                         <p class="fs-3 text-center" style="color: #711A4E; font-size:200px; font-weight: bolder">Products</p>
+                        <hr>
 
                         <!-- Error/Message Section -->
                         <div class="messages">

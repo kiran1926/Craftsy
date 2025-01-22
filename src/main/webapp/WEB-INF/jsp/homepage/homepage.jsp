@@ -29,72 +29,72 @@
               <img src="/pub/images/slider/image-9.jpg" class="d-block w-100" alt="..."
                    height="500px" style="border-radius: 10px;">
               <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Some representative placeholder content for the first slide.</p>
+                <h5>"Earthen Stories"</h5>
+                <p>Each pot whispers tales of generations past, of skilled hands shaping clay into art.</p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/pub/images/slider/image-7.jpg" class="d-block w-100" alt="..."
                    height="500px" style="border-radius: 10px;">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Some representative placeholder content for the second slide.</p>
+                <h5>"Hands of Creation"</h5>
+                <p>The artisan's hands bring life to the clay, shaping it into a work of art.</p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/pub/images/slider/image-3.jpg" class="d-block w-100" alt="..."
                    height="500px" style="border-radius: 10px;">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5>"A Tapestry of Textures"</h5>
+                <p>Feel the legacy of generations in every touch of these handcrafted pieces.</p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/pub/images/slider/image-4.jpg" class="d-block w-100" alt="..."
                    height="500px" style="border-radius: 10px;">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5>"Woven Wonders" </h5>
+                <p>These handcrafted pieces echo the rich cultural heritage of their makers.</p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/pub/images/slider/image-5.jpg" class="d-block w-100" alt="..."
                    height="500px" style="border-radius: 10px;">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5>"Divine Creation" </h5>
+                <p>The artist's hands breathe life into stone, shaping the divine form of Ganesha.</p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/pub/images/slider/image-2.jpg" class="d-block w-100" alt="..."
                    height="500px" style="border-radius: 10px;">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5>"Stitched Stories"</h5>
+                <p>Each stitch tells a story, a testament to the patience and artistry of the embroiderer.</p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/pub/images/slider/image-1.jpg" class="d-block w-100" alt="..."
                    height="500px" style="border-radius: 10px;">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5>"A Potpourri of Colors"</h5>
+                <p>The collection of vases, with their rich colors and intricate details, creates a visual feast that is both inspiring and captivating.</p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/pub/images/slider/image-8.jpg" class="d-block w-100" alt="..."
                    height="500px" style="border-radius: 10px;">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5>"Threads of Tradition"</h5>
+                <p>Experience the rich heritage of Indian textiles with our collection of handcrafted sarees.</p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/pub/images/slider/image-11.jpg" class="d-block w-100" alt="..."
                    height="500px" style="border-radius: 10px;">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5>"Bringing Form to Life"</h5>
+                <p>Capturing the moment where the artist's imagination takes shape in the clay.</p>
               </div>
             </div>
           </div>

@@ -17,7 +17,7 @@
                     <p class="fs-1">${product.name}
                         <sec:authorize access="hasAnyAuthority('ARTISAN', 'ADMIN')">
                                 <a href="/product/edit/${product.id}">
-                                    <i class="fa-solid fa-pen-to-square" style="color: #711A4E; padding-left: 260px; font-size: 35px"></i>
+                                    <i class="fa-solid fa-pen-to-square" style="color: #711A4E; padding-left: 40px; font-size: 35px"></i>
                                 </a>
                             </sec:authorize>
                     </p><hr>
