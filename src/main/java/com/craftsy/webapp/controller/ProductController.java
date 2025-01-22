@@ -106,7 +106,6 @@ public class ProductController {
         return response;
     }
 
-
     // ----------------    Create Product Submit    -----------------
 
     @PreAuthorize("hasAnyAuthority('ADMIN','ARTISAN')")
@@ -143,14 +142,6 @@ public class ProductController {
             product.setUserId(loggedInUser.getId());
             product.setUser(loggedInUser);
 
-//            List<UserRole> artisan = userRoleDAO.findAllByRoleName("ARTISAN");
-//            List<User> artisans = userDAO.findAllByUserRoles(artisan);
-//            response.addObject("artisanFound", artisans);
-
-            //priming this for user dropdown for after going to error
-            // User user = userDAO.findUserById(form.getUserId());
-            // product.setUser(user);
-
             //image file upload
             log.debug("uploaded filename = " + form.getUpload().getOriginalFilename()+ " size = " + form.getUpload().getSize());
             String pathToSave = "./src/main/webapp/pub/images/" + form.getUpload().getOriginalFilename();
@@ -168,7 +159,6 @@ public class ProductController {
         }
         return response;
     }
-
 
     // ----------------    Edit Product    -----------------
     @PreAuthorize("hasAnyAuthority('ADMIN','ARTISAN')")
@@ -195,5 +185,4 @@ public class ProductController {
         response.addObject("form", form);
         return response;
     }
-
 }

@@ -29,7 +29,7 @@ import java.util.Map;
 
 @Slf4j
 @Controller
-@PreAuthorize("hasAuthority('CUSTOMER')")
+@PreAuthorize("hasAnyAuthority('CUSTOMER', 'ADMIN','ARTISAN')")
 public class CartController {
 
     @Autowired

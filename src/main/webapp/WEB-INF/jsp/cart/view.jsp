@@ -21,7 +21,7 @@
     <div class="container py-5">
     <c:choose>
         <c:when test="${empty cartItems}">
-        <p>Your cart is empty. <a href="/products">Continue shopping</a></p>
+        <p style="font-size: x-large; padding-left: 200px">Your cart is empty. <a href="/products" style="color: #711A4E">Continue shopping</a></p>
         </c:when>
         <c:otherwise>
         <div class="row d-flex">

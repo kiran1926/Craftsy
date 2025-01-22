@@ -1,5 +1,6 @@
 <%-- JSTL --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <jsp:include page="../include/header.jsp"/>
 <%--load external signup css --%>
@@ -13,7 +14,14 @@
                     <img alt="" src="${product.imageUrl}" width="360px" height="440px" style="border-radius: 10px">
                 </div>
                 <div class="col-md-6">
-                    <p class="fs-1">${product.name}</p><br>
+                    <p class="fs-1">${product.name}
+                        <sec:authorize access="hasAnyAuthority('ARTISAN', 'ADMIN')">
+                                <a href="/product/edit/${product.id}">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #711A4E; padding-left: 260px; font-size: 35px"></i>
+                                </a>
+                            </sec:authorize>
+                    </p><hr>
+                    <br>
                     <p>
                         <span class="fs-4 fw-bold" style="color: #711A4E">Product Details: </span>
                         <br><span class="fw-bold"> Category : </span> ${product.category}
@@ -32,7 +40,8 @@
                     </p>
                     <div class="row">
                         <div class="col-md-4 text-center p-2">
-                            <p>Cash On Delivery</p>
+                            <i class="fa-solid fa-paintbrush fa-2x"></i>
+                            <p>Customization Available</p>
                         </div>
                         <div class="col-md-4 text-center p-2">
                             <i class="fas fa-undo-alt fa-2x"></i>

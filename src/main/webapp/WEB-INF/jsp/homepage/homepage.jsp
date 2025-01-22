@@ -112,7 +112,7 @@
 <%--      some text on the right of carousel      --%>
       <div class="container d-flex flex-column col-4 justify-content-center card-sh" style="background-color: white; border-radius: 10px;">
         <div class="p-2">
-        <h1 class="m-0  text-center align-items-center">Discover Unique Handmade Crafts</h1>
+        <h1 class="m-0  text-center align-items-center" style="color: #711A4E">Discover Unique Handmade Crafts</h1>
         </div>
         <div class="p-2 pt-5">
         <p class="m-0 text-center align-items-center" style="font-size: larger">Connect with artisans and support their creativity.</p>
@@ -126,37 +126,43 @@
   </div>
 </section>
 
-<%-- category  module--%>
-<section class="container" style="font-family: 'Quicksand',sans-serif; background-color: white; border-radius: 10px; padding-left: 20px; padding-right: 20px;">
-  <div class="featured mb-5 mt-5">
-    <h3 class="text-center mb-4">Featured Categories</h3>
-    <div class="row">
-      <div class="col-md-4">
-        <img src="https://images.pexels.com/photos/15638826/pexels-photo-15638826/free-photo-of-fusion-of-craft.jpeg" style="height:300px; width:400px; padding-left: 7px; border-radius: 15px"class="img-fluid rounded" alt="pottery">
-        <h5 class="text-center mt-2">Pottery</h5>
-      </div>
-      <div class="col-md-4">
-        <img src="https://images.pexels.com/photos/27330697/pexels-photo-27330697/free-photo-of-colorful-bags.jpeg"
-             style="height:300px; width:400px; border-radius: 10px" class="img-fluid rounded" alt="bamboo">
-        <h5 class="text-center mt-2">Bamboo Baskets</h5>
-      </div>
-      <div class="col-md-4">
-        <img src="https://m.media-amazon.com/images/I/619xiu6G68L._AC_UF894,1000_QL80_.jpg " style="height:300px; width:400px; border-radius: 15px" class="img-fluid rounded" alt="Paintings">
-        <h5 class="text-center mt-2">Paintings</h5>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section>
-  <div class="container">
-    <div class="d-flex flex-row">
-      <p class="text-center fs-4">Category</p>
-      <div class="col-md-2">
-        <div class="card">
-          <div class="card-body text-center">
-            <img src="img/category.png" width="90%" height="200px">
-            <p></p>
+  <div class="container-outer mt-4 card-sh" style="background-color: white">
+    <div class="container pt-3 pb-5">
+      <div class="row pt-3">
+        <p class="text-center fs-2 pb-1" style="color: #711A4E"> Featured Categories
+        <hr style="color: #711A4E; font-weight: bolder">
+        </p>
+        <div class="col-md-4">
+          <div class="card card-sh body-bg" style="border-radius: 10px">
+            <div class="card-body text-center">
+              <a href="/products/category?category=Pottery">
+              <img src="/pub/images/slider/pots-4.jpg" width="370px" height="300px"
+                   style="border-radius: 10px; margin-top: 10px"></a>
+              <p class="featured-item" style="font-size: x-large; padding-top: 20px;"><a href="/products/category?category=Pottery" style="color: #711A4E">Pottery</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-sh body-bg" style="border-radius: 10px">
+            <div class="card-body text-center">
+              <a href="/products/category?category=Bamboo%20Artifacts">
+              <img src="/pub/images/slider/basket-2.jpg" width="370px" height="300px"
+                   style="border-radius: 10px; margin-top: 10px"></a>
+              <p class="featured-item" style="font-size: x-large; padding-top: 20px;"><a href="/products/category?category=Bamboo%20Artifacts" style="color: #711A4E">Bamboo Artifact</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-sh body-bg" style="border-radius: 10px">
+            <div class="card-body text-center">
+              <a href="/products/category?category=Paintings">
+              <img src="https://m.media-amazon.com/images/I/619xiu6G68L._AC_UF894,1000_QL80_.jpg " width="370px" height="300px"
+                   style="border-radius: 10px; margin-top: 10px"></a>
+              <p class="featured-item" style="font-size: x-large; padding-top: 20px;"><a href="/products/category?category=Paintings" style="color: #711A4E">Paintings</a></p>
+            </div>
           </div>
         </div>
       </div>
