@@ -15,11 +15,13 @@
                             <a href="/products" class="list-group-item list-group-item-action active" style="background-color: #711A4E" aria-current="true">
                                 Categories </a>
                             <a href="/products/category?category=Pottery" class="list-group-item list-group-item-action" style="color: #711A4E">Pottery</a>
+                            <a href="/products/category?category=Ceramic%20Kitchenware" class="list-group-item list-group-item-action" style="color: #711A4E">Ceramic Kitchenware</a>
                             <a href="/products/category?category=Bamboo%20Artifacts" class="list-group-item list-group-item-action" style="color: #711A4E">Bamboo Artifacts</a>
                             <a href="/products/category?category=Paintings" class="list-group-item list-group-item-action" style="color: #711A4E">Paintings</a>
                             <a href="/products/category?category=Sculptures" class="list-group-item list-group-item-action" style="color: #711A4E">Sculptures</a>
                             <a href="/products/category?category=Wall%20Hangings" class="list-group-item list-group-item-action" style="color: #711A4E">Wall Hangings</a>
                             <a href="/products/category?category=Cultural%20Handicrafts" class="list-group-item list-group-item-action" style="color: #711A4E">Cultural Handicrafts</a>
+                            <a href="/products/category?category=Wooden%20Handicrafts" class="list-group-item list-group-item-action" style="color: #711A4E">Wooden Handicrafts</a>
                         </div>
                     </div>
                 </div>

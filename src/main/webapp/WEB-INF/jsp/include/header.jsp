@@ -100,6 +100,16 @@
                             <li><a class="dropdown-item" href="/products/category?category=Pottery">Pottery</a></li>
                             <li><a class="dropdown-item" href="/products/category?category=Bamboo%20Artifacts">Bamboo
                                 Artifacts</a></li>
+                            <li>
+                            <li><a class="dropdown-item" href="/products/category?category=Ceramic%20Kitchenware">Ceramic Kitchenware</a></li>
+                            <li>
+                            <li><a class="dropdown-item" href="/products/category?category=Wooden%20Handicrafts">Wooden Handicrafts
+                               </a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/products"
+                                   style="font-weight: bold;">All Categories</a></li>
                         </ul>
                     </li>
 
