@@ -68,7 +68,6 @@
                                             <input type="hidden" name="productId" value="${item.product.id}">
                                             <input type="hidden" name="adjustment" value="-1">
                                             <button type="submit" class="btn btn-secondary px-3 me-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                                     style="background-color: #961362; height: 40px; width: 40px;">
                                                 <i class="fas fa-minus"></i>
                                             </button>
@@ -83,7 +82,6 @@
                                             <input type="hidden" name="productId" value="${item.product.id}">
                                             <input type="hidden" name="adjustment" value="1">
                                             <button type="submit" class="btn btn-secondary px-3 ms-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                                     style="background-color: #961362; height: 40px; width: 40px;">
                                                 <i class="fas fa-plus"></i>
                                             </button>
@@ -120,16 +118,11 @@
                                 <span><p class="mb-2"> <fmt:formatNumber value="${totalPrice * 0.10}" type="currency"
                                                                          currencySymbol="$"/></p></span>
                             </li>
-                            <li
-                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3" style="background-color: #711A4E; color: white">
-                                <div>
-                                    <strong>Total amount</strong>
-                                    <strong>
-                                        <p class="mb-0"><p class="mb-2"><fmt:formatNumber value="${totalPrice * 0.10 + totalPrice}" type="currency"
-                                                                                          currencySymbol="$"/></p>
-                                    </strong>
-                                </div>
-                                <span><strong>$53.98</strong></span>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3" style="background-color: #711A4E; color: white">
+                                    <strong>Total amount </strong>
+                                       <strong><span><p class="mb-2 "><fmt:formatNumber value="${totalPrice * 0.10 + totalPrice}" type="currency"
+                                                                                                             currencySymbol="$"/></p></span></strong>
+
                             </li>
                         </ul>
                         <a href="/cart/confirmation" class="btn" style="background-color: #d5449b">Proceed to Checkout</a>

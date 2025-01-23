@@ -3,8 +3,10 @@ package com.craftsy.webapp.services;
 
 import com.craftsy.webapp.database.dao.OrderDAO;
 import com.craftsy.webapp.database.dao.OrderDetailDAO;
+import com.craftsy.webapp.database.dao.ProductDAO;
 import com.craftsy.webapp.database.entity.Order;
 import com.craftsy.webapp.database.entity.OrderDetail;
+import com.craftsy.webapp.database.entity.Product;
 import com.craftsy.webapp.security.AuthenticatedUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class CartService {
 
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
+    @Autowired
+    private ProductDAO productDAO;
 
 
     // -----------------  Adjust cart quantity   ---------------------
@@ -31,6 +35,7 @@ public class CartService {
 
         Integer userId = authenticatedUserService.loadCurrentUser().getId();
         Order cartOrder = orderDAO.findOrderByUserIdAndOrderStatus(userId, "CART");
+        Product product = productDAO.findProductById(productId);
 
         if( cartOrder == null){
             throw new IllegalArgumentException( "Cart not found for user with userID : " + userId);
@@ -46,6 +51,8 @@ public class CartService {
         }else {
             orderDetails.setQuantity(newQuantity);
             orderDetailDAO.save(orderDetails);
+            product.setStockQuantity(product.getStockQuantity() - adjustment);
+            productDAO.save(product);
         }
     }
 

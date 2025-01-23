@@ -115,6 +115,8 @@ public class CartController {
         }
 
         orderDetailDAO.save(orderDetails);
+        product.setStockQuantity(product.getStockQuantity()- orderDetails.getQuantity());
+        productDAO.save(product);
 
         if(ObjectUtils.isEmpty(orderDetails)){
             response.addObject("error", "Product add to cart failed.");
@@ -147,12 +149,16 @@ public class CartController {
         Integer userId = authenticatedUserService.loadCurrentUser().getId();
 
         //Check for existing order
+        Product product = productDAO.findProductById(productId);
         Order order = orderDAO.findOrderByUserIdAndOrderStatus(userId, "CART");
         if(order != null){
             OrderDetail orderDetails = orderDetailDAO.findOrderDetailByProductIdAndOrderId(productId, order.getId());
              if(orderDetails != null) {
                  //remove from cart
+                 Integer quantity = orderDetails.getQuantity();
                  orderDetailDAO.delete(orderDetails);
+                 product.setStockQuantity(product.getStockQuantity()+ quantity);
+                 productDAO.save(product);
                  log.debug("removed "+ orderDetails);
                  response.setViewName("redirect:/cart/view");
              }
@@ -173,6 +179,7 @@ public class CartController {
             response.addObject("error", e.getMessage());
             response.setViewName("cart/view");
         }
+        response.addObject("adjustment", adjustment);
         return response;
     }
 

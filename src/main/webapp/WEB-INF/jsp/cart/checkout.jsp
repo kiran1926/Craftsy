@@ -1,6 +1,7 @@
 <%-- JSTL --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <jsp:include page="../include/header.jsp"/>
 
@@ -13,6 +14,16 @@
         <div class="row">
             <h1 class="m-0 text-center">Checkout</h1>
         </div>
+        <!-- Error/Message Section -->
+        <div class="messages">
+            <c:if test="${not empty error}">
+                <p class="error-message" style="padding-left: 400px">${error}</p>
+            </c:if>
+            <c:if test="${not empty message}">
+                <p class="success-message">${message}</p>
+            </c:if>
+        </div>
+
     </div>
 </section>
 
@@ -23,27 +34,31 @@
             <!-- Left Block: Shipping Details -->
             <div class="col-md-6 ">
                 <div class="card shadow-sm" style="border-radius: 10px">
-                    <div class="card-header text-center bg-footer text-white p-4" style="border-top-left-radius: 10px; border-top-right-radius:10px">
+                    <div class="card-header text-center bg-footer text-white p-4"
+                         style="border-top-left-radius: 10px; border-top-right-radius:10px">
                         <h3 class="mb-0">Shipping Details</h3>
                     </div>
                     <div class="card-body p-4">
-                        <form action="/cart/checkout" method="POST">
+                        <form>
                             <!-- Full Name -->
                             <div class="mb-3">
                                 <label for="name" class="form-label">Full Name:</label>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required />
+                                <input type="text" id="name" name="name" class="form-control"
+                                       placeholder="Enter your full name" required/>
                             </div>
 
                             <!-- Shipping Address -->
                             <div class="mb-3">
                                 <label for="address1" class="form-label">Shipping Address:</label>
-                                <input type="text" id="address1" name="address" class="form-control" placeholder="Enter your shipping address" required />
+                                <input type="text" id="address1" name="address" class="form-control"
+                                       placeholder="Enter your shipping address" required/>
                             </div>
 
                             <!-- Phone -->
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Phone:</label>
-                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required />
+                                <input type="text" id="phone" name="phone" class="form-control"
+                                       placeholder="Enter your phone number" required/>
                             </div>
 
                             <!-- Payment Method -->
@@ -58,10 +73,10 @@
                                 </select>
                             </div>
 
-<%--                            <!-- Confirm Button -->--%>
-<%--                            <div class="d-grid">--%>
-<%--                                <button type="submit" class="btn btn-primary btn-block">Confirm Details</button>--%>
-<%--                            </div>--%>
+                            <%--                            <!-- Confirm Button -->--%>
+                            <%--                            <div class="d-grid">--%>
+                            <%--                                <button type="submit" class="btn btn-primary btn-block">Confirm Details</button>--%>
+                            <%--                            </div>--%>
                         </form>
                     </div>
                 </div>
@@ -72,7 +87,8 @@
             <div class="col-md-6">
                 <!-- Order Summary -->
                 <div class="card shadow-sm mb-4" style="border-radius: 10px">
-                    <div class="card-header text-center bg-footer text-white" style="border-top-left-radius: 10px; border-top-right-radius:10px">
+                    <div class="card-header text-center bg-footer text-white"
+                         style="border-top-left-radius: 10px; border-top-right-radius:10px">
                         <h3 class="mb-0">Order Summary</h3>
                     </div>
                     <div class="card-body p-4">
@@ -84,7 +100,8 @@
                                         <h6 class="my-0">${item.product.name}</h6>
                                         <small class="text-muted">Quantity: ${item.quantity}</small>
                                     </div>
-                                    <span class="text-muted">$<fmt:formatNumber value="${item.product.price * item.quantity}"/></span>
+                                    <span class="text-muted">$<fmt:formatNumber
+                                            value="${item.product.price * item.quantity}"/></span>
                                 </li>
                             </c:forEach>
                         </ul>
@@ -124,35 +141,38 @@
                         <form class="mt-4">
                             <div class="form-outline form-white mb-4">
                                 <input type="text" id="typeName" class="form-control form-control-md"
-                                       placeholder="Cardholder's Name" />
+                                       placeholder="Cardholder's Name"/>
                                 <label class="form-label" for="typeName">Cardholder's Name</label>
                             </div>
                             <div class="form-outline form-white mb-4">
                                 <input type="text" id="typeText" class="form-control form-control-md"
-                                       placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                                       placeholder="1234 5678 9012 3457" minlength="19" maxlength="19"/>
                                 <label class="form-label" for="typeText">Card Number</label>
                             </div>
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="form-outline form-white">
                                         <input type="text" id="typeExp" class="form-control form-control-md"
-                                               placeholder="MM/YYYY" minlength="7" maxlength="7" />
+                                               placeholder="MM/YYYY" minlength="7" maxlength="7"/>
                                         <label class="form-label" for="typeExp">Expiration</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-outline form-white">
                                         <input type="password" id="cvv" class="form-control form-control-md"
-                                               placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="3" />
+                                               placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="3"/>
                                         <label class="form-label" for="cvv">Cvv</label>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <hr class="my-4" />
-                        <a href="/cart/confirmation" class="btn btn-lg" style="background-color: #d5449b; margin-left: 150px; width: 300px">Pay
-                            <fmt:formatNumber value="${subtotal * 0.10 + subtotal}" type="currency"
-                                              currencySymbol="$" /></a>
+                        <hr class="my-4"/>
+                        <form action="/cart/checkout" method="POST">
+                            <button class="btn btn-lg" type="submit"
+                               style="background-color: #d5449b; margin-left: 150px; width: 300px">Pay
+                                <fmt:formatNumber value="${subtotal * 0.10 + subtotal}" type="currency"
+                                                  currencySymbol="$"/></button>
+                        </form>
                     </div>
                 </div>
             </div>
