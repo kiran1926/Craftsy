@@ -115,9 +115,10 @@
         <h1 class="m-0  text-center align-items-center" style="color: #711A4E">Discover Unique Handmade Crafts</h1>
         </div>
         <div class="p-2 pt-5">
-        <p class="m-0 text-center align-items-center" style="font-size: larger">Connect with artisans and support their creativity.</p>
+        <p class="m-0 text-center align-items-center" style="font-size: larger;">"Connect with Artisans, support their creativity and preserve our cultural heritage."</p>
         </div>
         <div class="p-2 pt-5">
+          <p class="m-0 text-center align-items-center" style="font-size: 21px; color: #961362">Transform Your Home with Timeless Handmade Crafts</p>
           <p class="m-0 text-center align-items-center" style="font-size: x-large; color: #961362" ><a aria-current="page" href="/products" style="color: #961362"> Shop Now</a> <i class="fa-solid fa-arrow-right"></i></p>
         </div>
       </div>
