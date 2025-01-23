@@ -7,7 +7,7 @@
 <link href="/pub/css/view-product.css" rel="stylesheet">
 
 <section>
-    <div class="container card-sh pt-4 pb-4" style="margin-top: 100px; margin-bottom: 100px; background-color: white">
+    <div class="container card-sh pt-4 pb-4" style="margin-top: 100px; margin-bottom: 100px; background-color: white; border-radius: 10px">
         <div class="col-md-12 p-5">
             <div class="row">
                 <div class="col-md-6 text-center">

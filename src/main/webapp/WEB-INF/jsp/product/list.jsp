@@ -12,7 +12,7 @@
                 <div class="card shadow-sm pb-0 mb-5 bg-body-tertiary rounded body-bg" style="border-radius: 10px;">
                     <div class="card-body">
                         <div class="list-group" style="border-radius: 10px;">
-                            <a href="#" class="list-group-item list-group-item-action active" style="background-color: #711A4E" aria-current="true">
+                            <a href="/products" class="list-group-item list-group-item-action active" style="background-color: #711A4E" aria-current="true">
                                 Categories </a>
                             <a href="/products/category?category=Pottery" class="list-group-item list-group-item-action" style="color: #711A4E">Pottery</a>
                             <a href="/products/category?category=Bamboo%20Artifacts" class="list-group-item list-group-item-action" style="color: #711A4E">Bamboo Artifacts</a>
